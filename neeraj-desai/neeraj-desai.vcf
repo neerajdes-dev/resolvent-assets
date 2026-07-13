@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Desai;Neeraj;;;
+FN:Neeraj Desai
+ORG:Resolvent IT Services Pvt. Ltd.
+TITLE:Technical Consultant
+TEL;TYPE=CELL,VOICE:+919630378501
+TEL;TYPE=WHATSAPP:+919630378501
+EMAIL;TYPE=INTERNET,WORK:neeraj.desai@resolvent.in
+URL:https://www.resolvent.in
+URL;TYPE=LinkedIn:https://www.linkedin.com/company/resolvent-in
+ADR;TYPE=WORK:;;Floor No. 05, Office No. 501, Balaji Business Center, Pune-Bengaluru Highway, Baner;Pune;Maharashtra;411045;India
+NOTE:Resolvent IT Services Pvt. Ltd. - Think Out of Box
+END:VCARD
