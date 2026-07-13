@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Sahu;Neeraj;;;
+FN:Neeraj Sahu
+ORG:Resolvent IT Services Pvt. Ltd.
+TITLE:Business Consultant
+TEL;TYPE=CELL,VOICE:+917498570982
+TEL;TYPE=WHATSAPP:+917498570982
+EMAIL;TYPE=INTERNET,WORK:neeraj.sahu@resolvent.in
+URL:https://www.resolvent.in
+URL;TYPE=LinkedIn:https://www.linkedin.com/company/resolvent-in
+ADR;TYPE=WORK:;;Floor No. 05, Office No. 501, Balaji Business Center, Pune-Bengaluru Highway, Baner;Pune;Maharashtra;411045;India
+NOTE:Resolvent IT Services Pvt. Ltd. - Think Out of Box
+END:VCARD
