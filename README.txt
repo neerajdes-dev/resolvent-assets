@@ -1,20 +1,11 @@
-UPLOAD INSTRUCTIONS
+PHASE 2.1 UPLOAD STEPS
 
-1. Upload all files and folders to the root of your GitHub repository.
-2. In assets/, keep:
-   - style.css
-   - Resolvent_Logo.jpg
-3. In neeraj-desai/, rename Neeraj Desai's profile image to:
-   profile.jpg
-4. In neeraj-sahu/, rename Neeraj Sahu's profile image to:
-   profile.jpg
-5. In GitHub, open Settings > Pages.
-6. Choose:
-   Source: Deploy from a branch
-   Branch: main
-   Folder: / (root)
-7. Save and wait 1-3 minutes.
-
-Expected URLs:
-https://neerajdes-dev.github.io/resolvent-assets/neeraj-desai/
-https://neerajdes-dev.github.io/resolvent-assets/neeraj-sahu/
+1. Replace your existing index.html files with the new ones.
+2. Upload assets/style.css and assets/script.js.
+3. Keep these existing files:
+   assets/Resolvent_Logo.jpg
+   neeraj-desai/profile.jpg
+   neeraj-sahu/profile.jpg
+4. Upload your brochure PDF as:
+   assets/Resolvent_Company_Profile.pdf
+5. Commit changes and wait 1-3 minutes for GitHub Pages to refresh.
