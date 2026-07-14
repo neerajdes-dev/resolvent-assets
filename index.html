@@ -1,3 +1,39 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Resolvent Digital Business Cards</title>
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:Arial,sans-serif;background:linear-gradient(145deg,#f8fbff,#eaf1f8);color:#123b66;padding:24px}.box{background:#fff;padding:34px;border-radius:24px;box-shadow:0 18px 48px rgba(18,59,102,.16);max-width:600px;width:100%;text-align:center;border:1px solid #dce5ee}img{width:190px;max-width:70%;height:auto}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}a{padding:17px;border-radius:13px;background:#123b66;color:#fff;text-decoration:none;font-weight:700}p{color:#667085}@media(max-width:520px){.grid{grid-template-columns:1fr}}</style></head>
-<body><main class="box"><img src="assets/Resolvent_Logo.jpg" alt="Resolvent IT Services"><h1>Digital Business Cards</h1><p>Select a contact</p><div class="grid"><a href="neeraj-desai/">Neeraj Desai</a><a href="neeraj-sahu/">Neeraj Sahu</a></div></main></body></html>
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#123b66">
+  <title>Resolvent Digital Business Cards</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <style>
+    :root{--p:#123b66;--bg:#edf3f9;--card:#fff;--text:#123b66;--muted:#667085}
+    [data-theme="dark"]{--bg:#0c131c;--card:#141d27;--text:#78b7ee;--muted:#b3bfcb}
+    body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:Arial,sans-serif;background:linear-gradient(145deg,#f8fbff,var(--bg));padding:24px;color:var(--text)}
+    .box{background:var(--card);padding:34px;border-radius:24px;box-shadow:0 18px 48px rgba(18,59,102,.16);max-width:600px;width:100%;text-align:center}
+    img{width:190px;max-width:70%;height:auto}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+    a{padding:17px;border-radius:13px;background:#123b66;color:#fff;text-decoration:none;font-weight:700}
+    p{color:var(--muted)}button{position:fixed;top:18px;right:18px;border:0;border-radius:50%;width:44px;height:44px;cursor:pointer}
+    @media(max-width:520px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <button id="theme" onclick="toggle()">🌙</button>
+  <main class="box">
+    <img src="assets/Resolvent_Logo.jpg" alt="Resolvent IT Services">
+    <h1>Digital Business Cards</h1>
+    <p>Select a contact</p>
+    <div class="grid">
+      <a href="neeraj-desai/">Neeraj Desai</a>
+      <a href="neeraj-sahu/">Neeraj Sahu</a>
+    </div>
+  </main>
+  <script>
+    function setTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('resolvent-theme',t);document.getElementById('theme').textContent=t==='dark'?'☀️':'🌙'}
+    function toggle(){setTheme((document.documentElement.getAttribute('data-theme')||'light')==='dark'?'light':'dark')}
+    setTheme(localStorage.getItem('resolvent-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+    if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worker.js')}
+  </script>
+</body>
+</html>
