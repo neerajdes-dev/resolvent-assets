@@ -1,32 +1,103 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="Neeraj Desai - Technical Consultant at Resolvent IT Services Pvt. Ltd.">
-<title>Neeraj Desai | Resolvent IT Services</title><link rel="stylesheet" href="../assets/style.css"></head>
-<body><div class="page"><main class="card"><div class="cover"></div><div class="profile-wrap">
-<img class="profile" src="profile.jpg" alt="Neeraj Desai"></div><section class="content">
-<img class="logo" src="../assets/Resolvent_Logo.jpg" alt="Resolvent IT Services Pvt. Ltd.">
-<h1>Neeraj Desai</h1><p class="role">Technical Consultant</p><p class="company">Resolvent IT Services Pvt. Ltd.</p>
-<div class="actions">
-<a class="btn" href="tel:+919630378501">📞 Call</a>
-<a class="btn" href="https://wa.me/919630378501" target="_blank">💬 WhatsApp</a>
-<a class="btn" href="mailto:neeraj.desai@resolvent.in">✉️ Email</a>
-<a class="btn" href="https://www.resolvent.in" target="_blank">🌐 Website</a>
-<a class="btn" href="https://www.linkedin.com/company/resolvent-in" target="_blank">💼 LinkedIn</a>
-<a class="btn" href="https://maps.google.com/?q=Balaji+Business+Center+Baner+Pune" target="_blank">📍 Location</a>
-<a class="btn primary" href="neeraj-desai.vcf" download>⬇ Save Contact</a>
-<button class="btn primary" type="button" onclick="shareCard('Neeraj Desai')">📤 Share Contact</button>
-</div><div id="share-notice" class="notice"></div>
-<section class="section"><h2>About Resolvent</h2><p>Resolvent IT Services Pvt. Ltd. is a technology and talent solutions company helping businesses improve efficiency, scale teams, and accelerate digital transformation. Our capabilities include AI and automation, RPA, data analytics, custom software development, IT staffing, contract-to-hire, permanent recruitment, finance and accounting staffing, outsourcing, and digital marketing. We deliver flexible, scalable, and business-focused solutions for clients across India.</p></section>
-<section class="section"><h2>Our Expertise</h2><div class="services"><div class="service"><strong>AI & Automation</strong><span>AI solutions, workflow automation and intelligent process improvement.</span></div><div class="service"><strong>RPA Services</strong><span>Automation Anywhere, UiPath and Microsoft Power Automate expertise.</span></div><div class="service"><strong>Data & Analytics</strong><span>Data engineering, dashboards, reporting and actionable insights.</span></div><div class="service"><strong>Software Development</strong><span>Custom web applications, APIs, CRM platforms and enterprise software.</span></div><div class="service"><strong>IT Staffing</strong><span>Contract staffing, C2H and permanent IT recruitment support.</span></div><div class="service"><strong>Finance Staffing</strong><span>Finance and accounting talent across permanent and flexible models.</span></div><div class="service"><strong>Outsourcing</strong><span>Scalable technology, operational and managed support services.</span></div><div class="service"><strong>Digital Marketing</strong><span>SEO, social media, paid campaigns, content and online growth support.</span></div></div></section>
-<section class="section"><h2>Company Profile</h2><p>Download our company profile to learn more about our services, engagement models and capabilities.</p>
-<div class="actions" style="margin-top:12px"><a class="btn primary" href="../assets/Resolvent_Company_Profile.pdf" download>📄 Download Company Profile</a></div></section>
-<section class="section"><h2>Office Location</h2><div class="map-card"><p>Floor No. 05, Office No. 501, Balaji Business Center, Pune–Bengaluru Highway, Baner, Pune – 411045, Maharashtra, India</p>
-<a class="btn" href="https://maps.google.com/?q=Balaji+Business+Center+Baner+Pune" target="_blank">Open in Google Maps</a></div></section>
-<section class="section"><h2>Contact Details</h2><div class="info">
-<strong>Mobile:</strong> <a href="tel:+919630378501">+91 96303 78501</a><br>
-<strong>Email:</strong> <a href="mailto:neeraj.desai@resolvent.in">neeraj.desai@resolvent.in</a><br>
-<strong>Website:</strong> <a href="https://www.resolvent.in" target="_blank">www.resolvent.in</a><br>
-<strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/resolvent-in" target="_blank">Resolvent on LinkedIn</a>
-</div></section><div class="footer">Think Out of Box</div></section></main></div>
-<a class="floating-whatsapp" href="https://wa.me/919630378501" target="_blank" aria-label="Chat on WhatsApp">💬</a>
-<script src="../assets/script.js"></script></body></html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#123b66">
+  <meta name="description" content="Neeraj Desai - Technical Consultant at Resolvent IT Services Pvt. Ltd.">
+  <title>Neeraj Desai | Resolvent IT Services</title>
+  <link rel="manifest" href="../manifest.json">
+  <link rel="apple-touch-icon" href="../assets/icon-192.png">
+  <link rel="stylesheet" href="../assets/style.css">
+
+  <!-- Google Analytics 4: replace G-XXXXXXXXXX with your Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js',new Date());
+    gtag('config','G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+  <div class="page">
+    <div id="install-banner" class="install-banner">
+      <p>Install this digital card on your phone.</p>
+      <button type="button" onclick="installApp()">Install</button>
+    </div>
+
+    <main class="card">
+      <div class="cover">
+        <div class="top-tools">
+          <button id="theme-toggle" class="icon-btn" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </div>
+
+      <div class="profile-wrap">
+        <img class="profile" src="profile.jpg" alt="Neeraj Desai">
+      </div>
+
+      <section class="content">
+        <img class="logo" src="../assets/Resolvent_Logo.jpg" alt="Resolvent IT Services Pvt. Ltd.">
+        <h1>Neeraj Desai</h1>
+        <p class="role">Technical Consultant</p>
+        <p class="company">Resolvent IT Services Pvt. Ltd.</p>
+
+        <div class="actions">
+          <a class="btn" href="tel:+919630378501" onclick="trackEvent('call_click',{person:'Neeraj Desai'})">📞 Call</a>
+          <a class="btn" href="https://wa.me/919630378501" target="_blank" onclick="trackEvent('whatsapp_click',{person:'Neeraj Desai'})">💬 WhatsApp</a>
+          <a class="btn" href="mailto:neeraj.desai@resolvent.in" onclick="trackEvent('email_click',{person:'Neeraj Desai'})">✉️ Email</a>
+          <a class="btn" href="https://www.resolvent.in" target="_blank" onclick="trackEvent('website_click',{person:'Neeraj Desai'})">🌐 Website</a>
+          <a class="btn" href="https://www.linkedin.com/company/resolvent-in" target="_blank" onclick="trackEvent('linkedin_click',{person:'Neeraj Desai'})">💼 LinkedIn</a>
+          <a class="btn" href="https://maps.google.com/?q=Balaji+Business+Center+Baner+Pune" target="_blank" onclick="trackEvent('location_click',{person:'Neeraj Desai'})">📍 Location</a>
+          <a class="btn primary" href="neeraj-desai.vcf" download onclick="trackEvent('save_contact',{person:'Neeraj Desai'})">⬇ Save Contact</a>
+          <button class="btn primary" type="button" onclick="shareCard('Neeraj Desai');trackEvent('share_contact',{person:'Neeraj Desai'})">📤 Share Contact</button>
+        </div>
+
+        <div id="share-notice" class="notice"></div>
+
+        <section class="section">
+          <h2>About Resolvent</h2>
+          <p>Resolvent IT Services Pvt. Ltd. is a technology and talent solutions company helping businesses improve efficiency, scale teams, and accelerate digital transformation. Our capabilities include AI and automation, RPA, data analytics, custom software development, IT staffing, contract-to-hire, permanent recruitment, finance and accounting staffing, outsourcing, and digital marketing. We deliver flexible, scalable, and business-focused solutions for clients across India.</p>
+        </section>
+
+        <section class="section">
+          <h2>Our Expertise</h2>
+          <div class="services"><div class="service"><strong>AI & Automation</strong><span>AI solutions, workflow automation and intelligent process improvement.</span></div><div class="service"><strong>RPA Services</strong><span>Automation Anywhere, UiPath and Microsoft Power Automate expertise.</span></div><div class="service"><strong>Data & Analytics</strong><span>Data engineering, dashboards, reporting and actionable insights.</span></div><div class="service"><strong>Software Development</strong><span>Custom web applications, APIs, CRM platforms and enterprise software.</span></div><div class="service"><strong>IT Staffing</strong><span>Contract staffing, C2H and permanent IT recruitment support.</span></div><div class="service"><strong>Finance Staffing</strong><span>Finance and accounting talent across permanent and flexible models.</span></div><div class="service"><strong>Outsourcing</strong><span>Scalable technology, operational and managed support services.</span></div><div class="service"><strong>Digital Marketing</strong><span>SEO, social media, paid campaigns, content and online growth support.</span></div></div>
+        </section>
+
+        <section class="section">
+          <h2>Company Profile</h2>
+          <p>Download our company profile to learn more about our services, engagement models and capabilities.</p>
+          <div class="actions" style="margin-top:12px">
+            <a class="btn primary" href="../assets/Resolvent_Company_Profile.pdf" download onclick="trackEvent('brochure_download',{person:'Neeraj Desai'})">📄 Download Company Profile</a>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Office Location</h2>
+          <div class="map-card">
+            <p>Floor No. 05, Office No. 501, Balaji Business Center, Pune–Bengaluru Highway, Baner, Pune – 411045, Maharashtra, India</p>
+            <a class="btn" href="https://maps.google.com/?q=Balaji+Business+Center+Baner+Pune" target="_blank">Open in Google Maps</a>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Contact Details</h2>
+          <div class="info">
+            <strong>Mobile:</strong> <a href="tel:+919630378501">+91 96303 78501</a><br>
+            <strong>Email:</strong> <a href="mailto:neeraj.desai@resolvent.in">neeraj.desai@resolvent.in</a><br>
+            <strong>Website:</strong> <a href="https://www.resolvent.in" target="_blank">www.resolvent.in</a><br>
+            <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/resolvent-in" target="_blank">Resolvent on LinkedIn</a>
+          </div>
+        </section>
+
+        <div class="footer">Think Out of Box</div>
+      </section>
+    </main>
+  </div>
+
+  <a class="floating-whatsapp" href="https://wa.me/919630378501" target="_blank" aria-label="Chat on WhatsApp">💬</a>
+  <script src="../assets/script.js"></script>
+</body>
+</html>
