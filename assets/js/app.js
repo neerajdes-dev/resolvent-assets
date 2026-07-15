@@ -6,7 +6,24 @@ function toggleTheme(){const c=document.documentElement.getAttribute('data-theme
 function showNotice(t){const e=document.getElementById('notice');if(!e)return;e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',2500)}
 async function shareCard(name){const d={title:`${name} - Resolvent IT Services`,text:`Connect with ${name} from Resolvent IT Services Pvt. Ltd.`,url:location.href};if(navigator.share){try{await navigator.share(d)}catch{};return}await navigator.clipboard.writeText(location.href);showNotice('Card link copied to clipboard.')}
 function employeeCard(e){return `<div class="team-card"><img src="${e.photo}" alt="${e.name}"><h3>${e.name}</h3><p>${e.designation}</p><div class="chips" style="justify-content:center;margin-top:10px">${e.focus.map(x=>`<span class="chip">${x}</span>`).join('')}</div><a class="btn" style="margin-top:12px" href="employee.html?id=${e.id}">View Card</a></div>`}
-function submitCallback(ev,e){ev.preventDefault();const f=new FormData(ev.target);const m=[`Hello ${e.name},`,'','I would like to request a callback.',`Name: ${f.get('name')}`,`Company: ${f.get('company')}`,`Email: ${f.get('email')}`,`Phone: ${f.get('phone')}`,`Requirement: ${f.get('requirement')}`].join('
-');window.open(`https://wa.me/${e.mobileDigits}?text=${encodeURIComponent(m)}`,'_blank')}
+function submitCallback(event, employee) {
+  event.preventDefault();
+
+  const form = new FormData(event.target);
+
+  const message = [
+    `Hello ${employee.name},`,
+    "",
+    "I would like to request a callback.",
+    `Name: ${form.get("name")}`,
+    `Company: ${form.get("company")}`,
+    `Email: ${form.get("email")}`,
+    `Phone: ${form.get("phone")}`,
+    `Requirement: ${form.get("requirement")}`
+  ].join("\n");window.open(
+    `https://wa.me/${employee.mobileDigits}?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
+}
 async function init(){const id=q('id')||'neeraj-desai';const [emps,c,s,i,t,m]=await Promise.all([getJson('data/employees.json'),getJson('data/company.json'),getJson('data/services.json'),getJson('data/industries.json'),getJson('data/technologies.json'),getJson('data/engagement-models.json')]);const e=emps.find(x=>x.id===id)||emps[0];document.title=`${e.name} | Resolvent IT Services`;document.getElementById('profile-photo').src=e.photo;document.getElementById('employee-name').textContent=e.name;document.getElementById('designation').textContent=e.designation;document.getElementById('company-name').textContent=c.name;document.getElementById('about').textContent=c.about;document.getElementById('actions').innerHTML=`<a class="btn" href="tel:+${e.mobileDigits}">📞 Call</a><a class="btn" href="https://wa.me/${e.mobileDigits}" target="_blank">💬 WhatsApp</a><a class="btn" href="mailto:${e.email}">✉️ Email</a><a class="btn" href="${c.website}" target="_blank">🌐 Website</a><a class="btn" href="${e.linkedin}" target="_blank">💼 LinkedIn</a><a class="btn" href="${c.maps}" target="_blank">📍 Location</a><a class="btn primary" href="${e.vcf}" download>⬇ Save Contact</a><button class="btn primary" id="share-btn">📤 Share Contact</button>`;document.getElementById('share-btn').onclick=()=>shareCard(e.name);document.getElementById('services').innerHTML=s.map(x=>`<div class="service"><span class="emoji">${x.icon}</span><strong>${x.title}</strong><span>${x.description}</span></div>`).join('');document.getElementById('industries').innerHTML=i.map(x=>`<span class="chip">${x}</span>`).join('');document.getElementById('technologies').innerHTML=t.map(x=>`<span class="chip">${x}</span>`).join('');document.getElementById('models').innerHTML=m.map(x=>`<div class="model"><strong>✓ ${x}</strong><span>Flexible engagement aligned with your business requirement.</span></div>`).join('');document.getElementById('team').innerHTML=emps.map(employeeCard).join('');document.getElementById('office-address').textContent=c.address;document.getElementById('map-link').href=c.maps;document.getElementById('brochure-view').href='assets/images/Resolvent_Company_Profile.pdf';document.getElementById('brochure-download').href='assets/images/Resolvent_Company_Profile.pdf';document.getElementById('callback-form').onsubmit=ev=>submitCallback(ev,e);document.getElementById('floating-whatsapp').href=`https://wa.me/${e.mobileDigits}`;document.getElementById('footer-company').textContent=c.name}
 applyTheme(localStorage.getItem('resolvent-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));init().catch(console.error)
