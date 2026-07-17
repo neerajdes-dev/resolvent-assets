@@ -1,6 +1,11 @@
 [
   {
     "id": "neeraj-desai",
+    "meeting": {
+    "enabled": true,
+    "provider": "google",
+    "url": "https://calendar.app.google/w95wGHSjmAQT57uCA"
+  }
     "name": "Neeraj Desai",
     "designation": "Technical Consultant",
     "mobileDisplay": "+91 96303 78501",
@@ -21,6 +26,11 @@
   },
   {
     "id": "neeraj-sahu",
+    "meeting": {
+    "enabled": true,
+    "provider": "google",
+    "url": "https://calendar.app.google/w95wGHSjmAQT57uCA"
+  }
     "name": "Neeraj Sahu",
     "designation": "Business Consultant",
     "mobileDisplay": "+91 74985 70982",
