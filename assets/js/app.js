@@ -1,6 +1,6 @@
 
 const CONFIG={
-  GOOGLE_SCRIPT_URL:"PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE",
+  GOOGLE_SCRIPT_URL:"https://script.google.com/macros/s/AKfycbyeqB0CTIMciLBG1B1_lm2cvlsr77Tts3ceJ725bTh1uPlJdbFcrnEuFgE-0nvrgfVSvw/exec",
   GA_MEASUREMENT_ID:""
 };
 
