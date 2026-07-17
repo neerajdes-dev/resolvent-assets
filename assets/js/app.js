@@ -1,6 +1,6 @@
 
 const CONFIG={
-  GOOGLE_SCRIPT_URL:"https://script.google.com/macros/s/AKfycbyeqB0CTIMciLBG1B1_lm2cvlsr77Tts3ceJ725bTh1uPlJdbFcrnEuFgE-0nvrgfVSvw/exec",
+  GOOGLE_SCRIPT_URL:"PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE",
   GA_MEASUREMENT_ID:""
 };
 
@@ -188,6 +188,9 @@ async function init(){
     <a class="btn" href="${company.website}" target="_blank" rel="noopener" data-action="website">🌐 Website</a>
     <a class="btn" href="${employee.linkedin}" target="_blank" rel="noopener" data-action="linkedin">💼 LinkedIn</a>
     <a class="btn" href="${company.maps}" target="_blank" rel="noopener" data-action="location">📍 Location</a>
+    ${employee.meeting?.enabled && employee.meeting?.url
+      ? `<a class="btn" href="${employee.meeting.url}" target="_blank" rel="noopener" data-action="meeting">📅 Book Meeting</a>`
+      : ""}
     <a class="btn primary" href="${employee.vcf}" download data-action="save_contact">⬇ Save Contact</a>
     <button id="share-card" class="btn primary" type="button">📤 Share Contact</button>`;
 
@@ -223,7 +226,17 @@ async function init(){
   document.getElementById("mobile-call").href=`tel:+${employee.mobileDigits}`;
   document.getElementById("mobile-whatsapp").href=`https://wa.me/${employee.mobileDigits}`;
   document.getElementById("mobile-email").href=`mailto:${employee.email}`;
-  document.getElementById("mobile-calendar").href=employee.calendar||company.website;
+  const meetingLink=document.getElementById("mobile-calendar");
+  const meetingEnabled=employee.meeting?.enabled===true && Boolean(employee.meeting?.url);
+
+  if(meetingEnabled){
+    meetingLink.href=employee.meeting.url;
+    meetingLink.style.display="";
+    meetingLink.dataset.provider=employee.meeting.provider||"custom";
+  }else{
+    meetingLink.removeAttribute("href");
+    meetingLink.style.display="none";
+  }
 
   setupReveal();
 
