@@ -1,52 +1,243 @@
 
-const CONFIG={GOOGLE_SCRIPT_URL:"https://script.google.com/macros/s/AKfycbyeqB0CTIMciLBG1B1_lm2cvlsr77Tts3ceJ725bTh1uPlJdbFcrnEuFgE-0nvrgfVSvw/exec"};
-async function load(path){const r=await fetch(path,{cache:"no-store"});if(!r.ok)throw new Error(path);return r.json()}
-function id(){return new URLSearchParams(location.search).get("id")||"neeraj-desai"}
-function applyTheme(t){document.documentElement.setAttribute("data-theme",t);localStorage.setItem("resolvent-theme",t);const b=document.getElementById("theme-toggle");if(b)b.textContent=t==="dark"?"☀️":"🌙"}
-function toggleTheme(){applyTheme((document.documentElement.getAttribute("data-theme")||"light")==="dark"?"light":"dark")}
-async function shareCard(name){const d={title:`${name} - Resolvent IT Services`,text:`Connect with ${name}`,url:location.href};if(navigator.share){try{await navigator.share(d)}catch{};return}await navigator.clipboard.writeText(location.href);alert("Card link copied.")}
-function status(type,msg){const x=document.getElementById("form-status");x.className=`status ${type}`;x.textContent=msg}
-function teamCard(e){return `<div class="team-card"><img src="${e.photo}" alt="${e.name}"><h3>${e.name}</h3><p>${e.designation}</p><div class="chips" style="justify-content:center">${e.focus.map(x=>`<span class="chip">${x}</span>`).join("")}</div><a class="btn" href="employee.html?id=${e.id}">View Card</a></div>`}
-async function submitLead(ev,employee){
-  ev.preventDefault();
-  const f=ev.target,b=f.querySelector("button[type=submit]");
-  const p={submittedAt:new Date().toISOString(),employeeId:employee.id,employeeName:employee.name,employeeEmail:employee.notificationEmail,name:f.name.value.trim(),company:f.company.value.trim(),email:f.email.value.trim(),phone:f.phone.value.trim(),service:f.service.value,requirement:f.requirement.value.trim(),source:f.source.value,pageUrl:location.href};
-  if(CONFIG.GOOGLE_SCRIPT_URL.includes("PASTE_YOUR")){status("error","Add the Google Apps Script URL in assets/js/app.js.");return}
-  b.disabled=true;b.textContent="Submitting...";status("success","Submitting your request...");
-  try{
-    await fetch(CONFIG.GOOGLE_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p)});
-    f.reset();status("success","Thank you. Your request has been received.");
-  }catch(e){console.error(e);status("error","Unable to submit. Please use WhatsApp or call us.");}
-  finally{b.disabled=false;b.textContent="Submit Request";}
+const CONFIG={
+  GOOGLE_SCRIPT_URL:"PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE",
+  GA_MEASUREMENT_ID:""
+};
+
+async function load(path){
+  const response=await fetch(path,{cache:"no-store"});
+  if(!response.ok) throw new Error(`Unable to load ${path}`);
+  return response.json();
 }
+
+function employeeId(){
+  return new URLSearchParams(location.search).get("id")||"neeraj-desai";
+}
+
+function applyTheme(theme){
+  document.documentElement.setAttribute("data-theme",theme);
+  localStorage.setItem("resolvent-theme",theme);
+  const button=document.getElementById("theme-toggle");
+  if(button) button.textContent=theme==="dark"?"☀️":"🌙";
+}
+
+function toggleTheme(){
+  const current=document.documentElement.getAttribute("data-theme")||"light";
+  applyTheme(current==="dark"?"light":"dark");
+}
+
+function trackEvent(name,params={}){
+  if(typeof gtag==="function") gtag("event",name,params);
+}
+
+async function shareCard(name){
+  const data={
+    title:`${name} - Resolvent IT Services`,
+    text:`Connect with ${name} from Resolvent IT Services Pvt. Ltd.`,
+    url:location.href
+  };
+  if(navigator.share){
+    try{await navigator.share(data);trackEvent("share_card",{employee:name});}catch{}
+    return;
+  }
+  await navigator.clipboard.writeText(location.href);
+  alert("Card link copied.");
+}
+
+function showStatus(type,message){
+  const box=document.getElementById("form-status");
+  box.className=`status ${type}`;
+  box.textContent=message;
+}
+
+function teamCard(employee){
+  return `<div class="team-card">
+    <img src="${employee.photo}" alt="${employee.name}">
+    <h3>${employee.name}</h3>
+    <p>${employee.designation}</p>
+    <div class="chips" style="justify-content:center;margin:10px 0">
+      ${employee.focus.map(item=>`<span class="chip">${item}</span>`).join("")}
+    </div>
+    <a class="btn" href="employee.html?id=${employee.id}">View Card</a>
+  </div>`;
+}
+
+function modelCard(model){
+  if(typeof model==="string"){
+    return `<div class="model"><strong>✓ ${model}</strong></div>`;
+  }
+  return `<div class="model"><strong>✓ ${model.title}</strong><span>${model.description||""}</span></div>`;
+}
+
+async function submitLead(event,employee){
+  event.preventDefault();
+
+  const form=event.target;
+  const button=form.querySelector('button[type="submit"]');
+
+  const payload={
+    submittedAt:new Date().toISOString(),
+    employeeId:employee.id,
+    employeeName:employee.name,
+    employeeEmail:employee.notificationEmail,
+    name:form.name.value.trim(),
+    company:form.company.value.trim(),
+    email:form.email.value.trim(),
+    phone:form.phone.value.trim(),
+    service:form.service.value,
+    requirement:form.requirement.value.trim(),
+    source:form.source.value,
+    pageUrl:location.href
+  };
+
+  if(CONFIG.GOOGLE_SCRIPT_URL.includes("PASTE_YOUR")){
+    showStatus("error","Add your Google Apps Script Web App URL in assets/js/app.js.");
+    return;
+  }
+
+  button.disabled=true;
+  button.textContent="Submitting...";
+  showStatus("success","Submitting your request...");
+
+  try{
+    await fetch(CONFIG.GOOGLE_SCRIPT_URL,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify(payload)
+    });
+
+    form.reset();
+    showStatus("success","Thank you. Your request has been received and our team will contact you shortly.");
+    trackEvent("callback_request",{employee:employee.name,service:payload.service,source:payload.source});
+  }catch(error){
+    console.error(error);
+    showStatus("error","Unable to submit the request. Please contact us using WhatsApp or phone.");
+  }finally{
+    button.disabled=false;
+    button.textContent="Submit Request";
+  }
+}
+
+function setupReveal(){
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.12});
+
+  document.querySelectorAll(".reveal").forEach(element=>observer.observe(element));
+}
+
+function updateMeta(employee,company){
+  const description=`Connect with ${employee.name}, ${employee.designation} at ${company.name}.`;
+  document.title=`${employee.name} | ${employee.designation} | Resolvent`;
+  document.getElementById("meta-description").content=description;
+  document.getElementById("og-title").content=`${employee.name} | ${company.name}`;
+  document.getElementById("og-description").content=description;
+  document.getElementById("og-url").content=location.href;
+  document.getElementById("og-image").content=new URL(employee.photo,location.href).href;
+
+  const schema={
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":employee.name,
+    "jobTitle":employee.designation,
+    "email":employee.email,
+    "telephone":employee.mobileDisplay,
+    "image":new URL(employee.photo,location.href).href,
+    "worksFor":{"@type":"Organization","name":company.name,"url":company.website}
+  };
+  const script=document.createElement("script");
+  script.type="application/ld+json";
+  script.textContent=JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
 async function init(){
-  const [emps,c,s,inds,tech,models]=await Promise.all([load("data/employees.json"),load("data/company.json"),load("data/services.json"),load("data/industries.json"),load("data/technologies.json"),load("data/engagement-models.json")]);
-  const e=emps.find(x=>x.id===id())||emps[0];
-  document.title=`${e.name} | Resolvent IT Services`;
-  document.getElementById("profile-photo").src=e.photo;
-  document.getElementById("employee-name").textContent=e.name;
-  document.getElementById("designation").textContent=e.designation;
-  document.getElementById("company-name").textContent=c.name;
-  document.getElementById("about").textContent=c.about;
-  document.getElementById("actions").innerHTML=`<a class="btn" href="tel:+${e.mobileDigits}">📞 Call</a><a class="btn" href="https://wa.me/${e.mobileDigits}" target="_blank">💬 WhatsApp</a><a class="btn" href="mailto:${e.email}">✉️ Email</a><a class="btn" href="${c.website}" target="_blank">🌐 Website</a><a class="btn" href="${e.linkedin}" target="_blank">💼 LinkedIn</a><a class="btn" href="${c.maps}" target="_blank">📍 Location</a><a class="btn primary" href="${e.vcf}" download>⬇ Save Contact</a><button id="share" class="btn primary">📤 Share Contact</button>`;
-  document.getElementById("share").onclick=()=>shareCard(e.name);
-  document.getElementById("services").innerHTML=s.map(x=>`<div class="service"><strong>${x.icon} ${x.title}</strong><span>${x.description}</span></div>`).join("");
-  document.getElementById("industries").innerHTML=inds.map(x=>`<span class="chip">${x}</span>`).join("");
-  document.getElementById("technologies").innerHTML=tech.map(x=>`<span class="chip">${x}</span>`).join("");
-  document.getElementById("models").innerHTML =
-    models.map(model => `
-        <div class="model">
-            <strong>✓ ${model.title}</strong>
-            <span>${model.description}</span>
-        </div>
-    `).join("");
-  document.getElementById("team").innerHTML=emps.map(teamCard).join("");
-  document.getElementById("office-address").textContent=c.address;
-  document.getElementById("map-link").href=c.maps;
+  const [employees,company,services,industries,technologies,models,stats,testimonials]=await Promise.all([
+    load("data/employees.json"),
+    load("data/company.json"),
+    load("data/services.json"),
+    load("data/industries.json"),
+    load("data/technologies.json"),
+    load("data/engagement-models.json"),
+    load("data/stats.json"),
+    load("data/testimonials.json")
+  ]);
+
+  const employee=employees.find(item=>item.id===employeeId())||employees[0];
+  updateMeta(employee,company);
+
+  document.getElementById("profile-photo").src=employee.photo;
+  document.getElementById("profile-photo").alt=employee.name;
+  document.getElementById("employee-name").textContent=employee.name;
+  document.getElementById("designation").textContent=employee.designation;
+  document.getElementById("company-name").textContent=company.name;
+  document.getElementById("employee-intro").textContent=employee.intro||"";
+  document.getElementById("hero-focus").innerHTML=employee.focus.map(item=>`<span>${item}</span>`).join("");
+  document.getElementById("about").textContent=company.about;
+
+  document.getElementById("actions").innerHTML=`
+    <a class="btn" href="tel:+${employee.mobileDigits}" data-action="call">📞 Call</a>
+    <a class="btn" href="https://wa.me/${employee.mobileDigits}" target="_blank" rel="noopener" data-action="whatsapp">💬 WhatsApp</a>
+    <a class="btn" href="mailto:${employee.email}" data-action="email">✉️ Email</a>
+    <a class="btn" href="${company.website}" target="_blank" rel="noopener" data-action="website">🌐 Website</a>
+    <a class="btn" href="${employee.linkedin}" target="_blank" rel="noopener" data-action="linkedin">💼 LinkedIn</a>
+    <a class="btn" href="${company.maps}" target="_blank" rel="noopener" data-action="location">📍 Location</a>
+    <a class="btn primary" href="${employee.vcf}" download data-action="save_contact">⬇ Save Contact</a>
+    <button id="share-card" class="btn primary" type="button">📤 Share Contact</button>`;
+
+  document.getElementById("share-card").onclick=()=>shareCard(employee.name);
+
+  document.querySelectorAll("[data-action]").forEach(link=>{
+    link.addEventListener("click",()=>trackEvent("contact_action",{action:link.dataset.action,employee:employee.name}));
+  });
+
+  document.getElementById("services").innerHTML=services.map(item=>
+    `<div class="service"><strong>${item.icon} ${item.title}</strong><span>${item.description}</span></div>`
+  ).join("");
+
+  document.getElementById("stats").innerHTML=stats.map(item=>
+    `<div class="highlight"><strong>${item.value}</strong><span>${item.label}</span></div>`
+  ).join("");
+
+  document.getElementById("industries").innerHTML=industries.map(item=>`<span class="chip">${item}</span>`).join("");
+  document.getElementById("technologies").innerHTML=technologies.map(item=>`<span class="chip">${item}</span>`).join("");
+  document.getElementById("models").innerHTML=models.map(modelCard).join("");
+
+  document.getElementById("testimonials").innerHTML=testimonials.map(item=>
+    `<article class="testimonial"><blockquote>“${item.quote}”</blockquote><strong>${item.name}</strong><small>${item.company}</small></article>`
+  ).join("");
+
+  document.getElementById("team").innerHTML=employees.map(teamCard).join("");
+  document.getElementById("office-address").textContent=company.address;
+  document.getElementById("map-link").href=company.maps;
   document.getElementById("brochure-view").href="assets/images/Resolvent_Company_Profile.pdf";
   document.getElementById("brochure-download").href="assets/images/Resolvent_Company_Profile.pdf";
-  document.getElementById("callback-form").onsubmit=ev=>submitLead(ev,e);
-  document.getElementById("floating-whatsapp").href=`https://wa.me/${e.mobileDigits}`;
+  document.getElementById("callback-form").onsubmit=event=>submitLead(event,employee);
+
+  document.getElementById("mobile-call").href=`tel:+${employee.mobileDigits}`;
+  document.getElementById("mobile-whatsapp").href=`https://wa.me/${employee.mobileDigits}`;
+  document.getElementById("mobile-email").href=`mailto:${employee.email}`;
+  document.getElementById("mobile-calendar").href=employee.calendar||company.website;
+
+  setupReveal();
+
+  if("serviceWorker" in navigator){
+    navigator.serviceWorker.register("service-worker.js").catch(console.error);
+  }
 }
-applyTheme(localStorage.getItem("resolvent-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));
-init().catch(err=>{console.error(err);document.body.innerHTML="<p style='padding:30px'>Unable to load the page. Check file paths.</p>"});
+
+applyTheme(
+  localStorage.getItem("resolvent-theme")||
+  (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light")
+);
+
+init().catch(error=>{
+  console.error(error);
+  document.body.innerHTML="<p style='padding:30px'>Unable to load the digital card. Please check the uploaded files and paths.</p>";
+});
