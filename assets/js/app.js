@@ -33,7 +33,7 @@ async function init(){
   document.getElementById("services").innerHTML=s.map(x=>`<div class="service"><strong>${x.icon} ${x.title}</strong><span>${x.description}</span></div>`).join("");
   document.getElementById("industries").innerHTML=inds.map(x=>`<span class="chip">${x}</span>`).join("");
   document.getElementById("technologies").innerHTML=tech.map(x=>`<span class="chip">${x}</span>`).join("");
-  document.getElementById("models").innerHTML=models.map(x=>`<div class="model"><strong>✓ ${x}</strong><span>${model.description}</span></div>`).join("");
+  document.getElementById("models").innerHTML=models.map(x=>`<div class="model"><strong>✓ ${model.title}</strong><span>${model.description}</span></div>`).join("");
   document.getElementById("team").innerHTML=emps.map(teamCard).join("");
   document.getElementById("office-address").textContent=c.address;
   document.getElementById("map-link").href=c.maps;
