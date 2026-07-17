@@ -226,8 +226,11 @@ async function init(){
   </div>
 `).join("");
 
-document.getElementById("client-track").innerHTML =
-  clientItems + clientItems;
+  const clientTrack = document.getElementById("client-track");
+
+  if (clientTrack) {
+    clientTrack.innerHTML = clientItems + clientItems;
+  }
   document.getElementById("office-address").textContent=company.address;
   document.getElementById("map-link").href=company.maps;
   document.getElementById("brochure-view").href="assets/images/Resolvent_Company_Profile.pdf";
