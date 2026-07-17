@@ -1,11 +1,6 @@
 [
   {
     "id": "neeraj-desai",
-    "meeting": {
-    "enabled": true,
-    "provider": "google",
-    "url": "https://calendar.app.google/w95wGHSjmAQT57uCA"
-  }
     "name": "Neeraj Desai",
     "designation": "Technical Consultant",
     "mobileDisplay": "+91 96303 78501",
@@ -21,16 +16,15 @@
       "Technology Consulting"
     ],
     "intro": "Helping businesses simplify operations through automation, software, data, and practical technology solutions.",
-    "calendar": "https://calendar.google.com/calendar/u/0/r/eventedit",
-    "github": "https://github.com/neerajdes-dev"
+    "github": "https://github.com/neerajdes-dev",
+    "meeting": {
+      "enabled": true,
+      "provider": "google",
+      "url": "https://calendar.app.google/w95wGHSjmAQT57uCA"
+    }
   },
   {
     "id": "neeraj-sahu",
-    "meeting": {
-    "enabled": true,
-    "provider": "google",
-    "url": "https://calendar.app.google/w95wGHSjmAQT57uCA"
-  }
     "name": "Neeraj Sahu",
     "designation": "Business Consultant",
     "mobileDisplay": "+91 74985 70982",
@@ -46,7 +40,11 @@
       "Client Relations"
     ],
     "intro": "Helping organizations build strong teams, improve recruitment outcomes, and identify the right business solutions.",
-    "calendar": "https://calendar.google.com/calendar/u/0/r/eventedit",
-    "github": ""
+    "github": "",
+    "meeting": {
+      "enabled": true,
+      "provider": "google",
+      "url": "https://calendar.app.google/w95wGHSjmAQT57uCA"
+    }
   }
 ]
