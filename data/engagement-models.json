@@ -1,10 +1,34 @@
 [
-  "Contract Staffing",
-  "Contract-to-Hire (C2H)",
-  "Permanent Hiring",
-  "Project-Based Development",
-  "Dedicated Teams",
-  "Managed Services",
-  "Offshore Delivery",
-  "Technology Consulting"
+  {
+    "title": "Contract Staffing",
+    "description": "Quickly onboard skilled professionals for short-term, long-term, or project-based requirements."
+  },
+  {
+    "title": "Contract-to-Hire (C2H)",
+    "description": "Evaluate professionals on contract before transitioning them into permanent employees."
+  },
+  {
+    "title": "Permanent Hiring",
+    "description": "Find experienced full-time professionals who align with your business goals and culture."
+  },
+  {
+    "title": "Project-Based Development",
+    "description": "Deliver complete software and digital transformation projects with dedicated project teams."
+  },
+  {
+    "title": "Dedicated Teams",
+    "description": "Build an exclusive team of experts working as an extension of your in-house workforce."
+  },
+  {
+    "title": "Managed Services",
+    "description": "Outsource the management of your IT operations, applications, or business processes with defined SLAs."
+  },
+  {
+    "title": "Offshore Delivery",
+    "description": "Reduce operational costs through high-quality offshore development and support teams."
+  },
+  {
+    "title": "Technology Consulting",
+    "description": "Receive expert guidance on digital transformation, cloud adoption, automation, AI, and enterprise solutions."
+  }
 ]
