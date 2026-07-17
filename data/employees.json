@@ -14,7 +14,10 @@
       "AI & Automation",
       "Software Development",
       "Technology Consulting"
-    ]
+    ],
+    "intro": "Helping businesses simplify operations through automation, software, data, and practical technology solutions.",
+    "calendar": "https://calendar.google.com/calendar/u/0/r/eventedit",
+    "github": "https://github.com/neerajdes-dev"
   },
   {
     "id": "neeraj-sahu",
@@ -31,6 +34,9 @@
       "Business Development",
       "Recruitment",
       "Client Relations"
-    ]
+    ],
+    "intro": "Helping organizations build strong teams, improve recruitment outcomes, and identify the right business solutions.",
+    "calendar": "https://calendar.google.com/calendar/u/0/r/eventedit",
+    "github": ""
   }
 ]
