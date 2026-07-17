@@ -1,5 +1,5 @@
 
-const CONFIG={GOOGLE_SCRIPT_URL:"PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE"};
+const CONFIG={GOOGLE_SCRIPT_URL:"https://script.google.com/macros/s/AKfycbyeqB0CTIMciLBG1B1_lm2cvlsr77Tts3ceJ725bTh1uPlJdbFcrnEuFgE-0nvrgfVSvw/exec"};
 async function load(path){const r=await fetch(path,{cache:"no-store"});if(!r.ok)throw new Error(path);return r.json()}
 function id(){return new URLSearchParams(location.search).get("id")||"neeraj-desai"}
 function applyTheme(t){document.documentElement.setAttribute("data-theme",t);localStorage.setItem("resolvent-theme",t);const b=document.getElementById("theme-toggle");if(b)b.textContent=t==="dark"?"☀️":"🌙"}
