@@ -50,17 +50,6 @@ function showStatus(type,message){
   box.textContent=message;
 }
 
-function teamCard(employee){
-  return `<div class="team-card">
-    <img src="${employee.photo}" alt="${employee.name}">
-    <h3>${employee.name}</h3>
-    <p>${employee.designation}</p>
-    <div class="chips" style="justify-content:center;margin:10px 0">
-      ${employee.focus.map(item=>`<span class="chip">${item}</span>`).join("")}
-    </div>
-    <a class="btn" href="employee.html?id=${employee.id}">View Card</a>
-  </div>`;
-}
 
 function modelCard(model){
   if(typeof model==="string"){
@@ -158,16 +147,27 @@ function updateMeta(employee,company){
 }
 
 async function init(){
-  const [employees,company,services,industries,technologies,models,stats,testimonials]=await Promise.all([
-    load("data/employees.json"),
-    load("data/company.json"),
-    load("data/services.json"),
-    load("data/industries.json"),
-    load("data/technologies.json"),
-    load("data/engagement-models.json"),
-    load("data/stats.json"),
-    load("data/testimonials.json")
-  ]);
+  cconst [
+  employees,
+  company,
+  services,
+  industries,
+  technologies,
+  models,
+  stats,
+  testimonials,
+  clients
+] = await Promise.all([
+  load("data/employees.json"),
+  load("data/company.json"),
+  load("data/services.json"),
+  load("data/industries.json"),
+  load("data/technologies.json"),
+  load("data/engagement-models.json"),
+  load("data/stats.json"),
+  load("data/testimonials.json"),
+  load("data/clients.json")
+]);
 
   const employee=employees.find(item=>item.id===employeeId())||employees[0];
   updateMeta(employee,company);
@@ -216,7 +216,18 @@ async function init(){
     `<article class="testimonial"><blockquote>“${item.quote}”</blockquote><strong>${item.name}</strong><small>${item.company}</small></article>`
   ).join("");
 
-  document.getElementById("team").innerHTML=employees.map(teamCard).join("");
+  const clientItems = clients.map(client => `
+  <div class="client-logo-card">
+    <img
+      src="${client.logo}"
+      alt="${client.name}"
+      loading="lazy"
+    >
+  </div>
+`).join("");
+
+document.getElementById("client-track").innerHTML =
+  clientItems + clientItems;
   document.getElementById("office-address").textContent=company.address;
   document.getElementById("map-link").href=company.maps;
   document.getElementById("brochure-view").href="assets/images/Resolvent_Company_Profile.pdf";
