@@ -147,7 +147,7 @@ function updateMeta(employee,company){
 }
 
 async function init(){
-  cconst [
+  const [
   employees,
   company,
   services,
