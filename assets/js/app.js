@@ -212,78 +212,125 @@ async function init(){
 
   document.getElementById("share-card").onclick=()=>shareCard(employee.name);
 
- const saveContactButton = document.getElementById("save-contact");
 
-if (saveContactButton) {
-    saveContactButton.addEventListener("click", async () => {
-        await shareContactCard(employee);
+  const saveContactButton = document.getElementById("save-contact");
+
+  if (saveContactButton) {
+    saveContactButton.addEventListener("click", () => {
+      saveEmployeeContact(employee, company);
     });
-}
+  }
 
-async function shareContactCard(employee) {
-    if (!employee || !employee.vcf) {
-        console.error("Employee VCF file is missing.");
-        alert("Contact file is currently unavailable.");
-        return;
+  function escapeVCardValue(value = "") {
+    return String(value)
+      .replace(/\\/g, "\\\\")
+      .replace(/\r?\n/g, "\\n")
+      .replace(/,/g, "\\,")
+      .replace(/;/g, "\\;");
+  }
+
+  function createEmployeeVCard(employee, company) {
+    const nameParts = (employee.name || "").trim().split(/\s+/);
+    const firstName = nameParts.shift() || "";
+    const lastName = nameParts.join(" ");
+
+    const lines = [
+      "BEGIN:VCARD",
+      "VERSION:3.0",
+      `N:${escapeVCardValue(lastName)};${escapeVCardValue(firstName)};;;`,
+      `FN:${escapeVCardValue(employee.name || "")}`,
+      `ORG:${escapeVCardValue(company.name || "Resolvent IT Services Pvt. Ltd.")}`,
+      `TITLE:${escapeVCardValue(employee.designation || "")}`,
+      `TEL;TYPE=CELL:+${escapeVCardValue(employee.mobileDigits || "")}`,
+      `EMAIL;TYPE=INTERNET:${escapeVCardValue(employee.email || "")}`,
+      company.website ? `URL:${escapeVCardValue(company.website)}` : "",
+      employee.linkedin
+        ? `URL;TYPE=LinkedIn:${escapeVCardValue(employee.linkedin)}`
+        : "",
+      employee.github
+        ? `URL;TYPE=GitHub:${escapeVCardValue(employee.github)}`
+        : "",
+      company.address
+        ? `ADR;TYPE=WORK:;;${escapeVCardValue(company.address)};;;;`
+        : "",
+      "END:VCARD"
+    ];
+
+    return lines.filter(Boolean).join("\r\n");
+  }
+
+  async function saveEmployeeContact(employee, company) {
+    if (!employee) {
+      alert("Employee details are unavailable.");
+      return;
     }
 
-    const fileName = `${employee.id || "contact"}.vcf`;
+    const vCardContent = createEmployeeVCard(employee, company);
+    const fileName = `${employee.id || "resolvent-contact"}.vcf`;
+
+    const vCardFile = new File(
+      [vCardContent],
+      fileName,
+      { type: "text/x-vcard;charset=utf-8" }
+    );
+
+    trackEvent("save_contact", {
+      employee: employee.name,
+      method: "native_share_or_download"
+    });
 
     try {
-        const response = await fetch(employee.vcf);
+      /*
+       * Generate the VCF immediately from employee data.
+       * This keeps the action inside the user's tap and gives
+       * navigator.share the best chance of opening the native share sheet.
+       */
+      if (
+        navigator.share &&
+        navigator.canShare &&
+        navigator.canShare({ files: [vCardFile] })
+      ) {
+        await navigator.share({
+          title: employee.name || "Resolvent Contact",
+          text: `Save ${employee.name || "this contact"} to your phone`,
+          files: [vCardFile]
+        });
+        return;
+      }
 
-        if (!response.ok) {
-            throw new Error(`VCF file could not be loaded: ${response.status}`);
-        }
-
-        const vcfBlob = await response.blob();
-
-        const vcfFile = new File(
-            [vcfBlob],
-            fileName,
-            {
-                type: "text/vcard"
-            }
-        );
-
-        if (
-            navigator.share &&
-            navigator.canShare &&
-            navigator.canShare({ files: [vcfFile] })
-        ) {
-            await navigator.share({
-                title: employee.name || "Save Contact",
-                text: `Save ${employee.name || "this contact"} to your phone`,
-                files: [vcfFile]
-            });
-
-            return;
-        }
-
-        downloadContactCard(employee.vcf, fileName);
-
+      downloadEmployeeVCard(vCardContent, fileName);
     } catch (error) {
-        if (error.name === "AbortError") {
-            return;
-        }
+      if (error && error.name === "AbortError") {
+        return;
+      }
 
-        console.error("Unable to share contact:", error);
-
-        downloadContactCard(employee.vcf, fileName);
+      console.error("Contact sharing failed:", error);
+      downloadEmployeeVCard(vCardContent, fileName);
     }
-}
+  }
 
-function downloadContactCard(vcfUrl, fileName) {
-    const downloadLink = document.createElement("a");
+  function downloadEmployeeVCard(vCardContent, fileName) {
+    const blob = new Blob(
+      [vCardContent],
+      { type: "text/x-vcard;charset=utf-8" }
+    );
 
-    downloadLink.href = vcfUrl;
-    downloadLink.download = fileName;
-    downloadLink.style.display = "none";
+    const fileUrl = URL.createObjectURL(blob);
+    const link = document.createElement("a");
 
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    downloadLink.remove();
-}
+    link.href = fileUrl;
+    link.download = fileName;
+    link.style.display = "none";
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setTimeout(() => {
+      URL.revokeObjectURL(fileUrl);
+    }, 1500);
+  }
+
 
 
   document.querySelectorAll("[data-action]").forEach(link=>{
