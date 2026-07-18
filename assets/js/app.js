@@ -191,7 +191,81 @@ async function init(){
     ${employee.meeting?.enabled && employee.meeting?.url
       ? `<a class="btn" href="${employee.meeting.url}" target="_blank" rel="noopener" data-action="meeting">📅 Book Meeting</a>`
       : ""}
-    <a class="btn primary" href="${employee.vcf}" download data-action="save_contact">⬇ Save Contact</a>
+    document.getElementById("actions").innerHTML = `
+  <a class="btn" href="tel:+${employee.mobileDigits}" data-action="call">
+    📞 Call
+  </a>
+
+  <a
+    class="btn"
+    href="https://wa.me/${employee.mobileDigits}"
+    target="_blank"
+    rel="noopener"
+    data-action="whatsapp">
+    💬 WhatsApp
+  </a>
+
+  <a class="btn" href="mailto:${employee.email}" data-action="email">
+    ✉️ Email
+  </a>
+
+  <a
+    class="btn"
+    href="${company.website}"
+    target="_blank"
+    rel="noopener"
+    data-action="website">
+    🌐 Website
+  </a>
+
+  <a
+    class="btn"
+    href="${employee.linkedin}"
+    target="_blank"
+    rel="noopener"
+    data-action="linkedin">
+    💼 LinkedIn
+  </a>
+
+  <a
+    class="btn"
+    href="${company.maps}"
+    target="_blank"
+    rel="noopener"
+    data-action="location">
+    📍 Location
+  </a>
+
+  ${
+    employee.meeting?.enabled && employee.meeting?.url
+      ? `
+        <a
+          class="btn"
+          href="${employee.meeting.url}"
+          target="_blank"
+          rel="noopener"
+          data-action="meeting">
+          📅 Book Meeting
+        </a>
+      `
+      : ""
+  }
+
+  <button
+    id="save-contact"
+    class="btn primary"
+    type="button"
+    data-action="save_contact">
+    👤 Save Contact
+  </button>
+
+  <button
+    id="share-card"
+    class="btn primary"
+    type="button">
+    📤 Share Contact
+  </button>
+`;
     <button id="share-card" class="btn primary" type="button">📤 Share Contact</button>`;
 
   document.getElementById("share-card").onclick=()=>shareCard(employee.name);
