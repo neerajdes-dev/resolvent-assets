@@ -215,54 +215,75 @@ async function init(){
  const saveContactButton = document.getElementById("save-contact");
 
 if (saveContactButton) {
-    saveContactButton.addEventListener("click", saveContact);
+    saveContactButton.addEventListener("click", async () => {
+        await shareContactCard(employee);
+    });
 }
 
-async function saveContact() {
+async function shareContactCard(employee) {
+    if (!employee || !employee.vcf) {
+        console.error("Employee VCF file is missing.");
+        alert("Contact file is currently unavailable.");
+        return;
+    }
 
-    // If a VCF URL already exists in your JSON, use it.
-    if (employee.vcf) {
+    const fileName = `${employee.id || "contact"}.vcf`;
 
-        try {
+    try {
+        const response = await fetch(employee.vcf);
 
-            const response = await fetch(employee.vcf);
-            const blob = await response.blob();
-
-            const file = new File(
-                [blob],
-                `${employee.id}.vcf`,
-                { type: "text/vcard" }
-            );
-
-            // Native Share (Android / iPhone)
-            if (
-                navigator.canShare &&
-                navigator.canShare({ files: [file] })
-            ) {
-
-                await navigator.share({
-                    title: employee.name,
-                    text: "Save Contact",
-                    files: [file]
-                });
-
-                return;
-            }
-
-        } catch (e) {
-            console.log(e);
+        if (!response.ok) {
+            throw new Error(`VCF file could not be loaded: ${response.status}`);
         }
 
-        // Fallback download
-        const link = document.createElement("a");
-        link.href = employee.vcf;
-        link.download = `${employee.id}.vcf`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        const vcfBlob = await response.blob();
+
+        const vcfFile = new File(
+            [vcfBlob],
+            fileName,
+            {
+                type: "text/vcard"
+            }
+        );
+
+        if (
+            navigator.share &&
+            navigator.canShare &&
+            navigator.canShare({ files: [vcfFile] })
+        ) {
+            await navigator.share({
+                title: employee.name || "Save Contact",
+                text: `Save ${employee.name || "this contact"} to your phone`,
+                files: [vcfFile]
+            });
+
+            return;
+        }
+
+        downloadContactCard(employee.vcf, fileName);
+
+    } catch (error) {
+        if (error.name === "AbortError") {
+            return;
+        }
+
+        console.error("Unable to share contact:", error);
+
+        downloadContactCard(employee.vcf, fileName);
     }
 }
 
+function downloadContactCard(vcfUrl, fileName) {
+    const downloadLink = document.createElement("a");
+
+    downloadLink.href = vcfUrl;
+    downloadLink.download = fileName;
+    downloadLink.style.display = "none";
+
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    downloadLink.remove();
+}
 
 
   document.querySelectorAll("[data-action]").forEach(link=>{
