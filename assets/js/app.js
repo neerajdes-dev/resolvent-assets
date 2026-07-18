@@ -212,13 +212,56 @@ async function init(){
 
   document.getElementById("share-card").onclick=()=>shareCard(employee.name);
 
-  const saveContactButton=document.getElementById("save-contact");
+ const saveContactButton = document.getElementById("save-contact");
 
-  if(saveContactButton){
-    saveContactButton.addEventListener("click",()=>{
-      openContactCard(employee.vcf);
-    });
-  }
+if (saveContactButton) {
+    saveContactButton.addEventListener("click", saveContact);
+}
+
+async function saveContact() {
+
+    // If a VCF URL already exists in your JSON, use it.
+    if (employee.vcf) {
+
+        try {
+
+            const response = await fetch(employee.vcf);
+            const blob = await response.blob();
+
+            const file = new File(
+                [blob],
+                `${employee.id}.vcf`,
+                { type: "text/vcard" }
+            );
+
+            // Native Share (Android / iPhone)
+            if (
+                navigator.canShare &&
+                navigator.canShare({ files: [file] })
+            ) {
+
+                await navigator.share({
+                    title: employee.name,
+                    text: "Save Contact",
+                    files: [file]
+                });
+
+                return;
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+
+        // Fallback download
+        const link = document.createElement("a");
+        link.href = employee.vcf;
+        link.download = `${employee.id}.vcf`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+}
 
 
 
