@@ -1,72 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="theme-color" content="#123b66">
-  <meta name="description" content="Connect with Resolvent IT Services - schedule a call, join Google Meet, save contacts and view digital business cards.">
-  <title>Connect with Resolvent IT Services</title>
-  <style>
-    :root{--navy:#123b66;--navy2:#0a2948;--green:#38a169;--bg:#f4f7fb;--card:#fff;--text:#172033;--muted:#687386;--line:#e5eaf1}
-    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(145deg,#edf4fb,#f8fafc);color:var(--text)}
-    .page{width:min(720px,calc(100% - 28px));margin:0 auto;padding:28px 0 48px}.hero,.team{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 50px rgba(18,59,102,.09)}
-    .hero{padding:30px 24px;text-align:center}.logo{width:min(210px,65%);height:auto;margin:0 auto 18px;display:block}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.13em;color:var(--green);text-transform:uppercase}
-    h1{font-size:30px;line-height:1.15;margin:9px 0 9px;color:var(--navy)}.sub{margin:0 auto 24px;color:var(--muted);line-height:1.6;max-width:520px}
-    .primary-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{min-height:52px;border-radius:14px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 15px;font-weight:750;border:1px solid #cdd8e5;color:var(--navy);background:#fff}
-    .btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}.btn.meet{background:var(--green);border-color:var(--green);color:#fff}.section-title{text-align:center;margin:30px 0 15px}.section-title h2{margin:5px 0;color:var(--navy);font-size:24px}.section-title p{margin:0;color:var(--muted)}
-    .team{padding:10px 22px}.person{display:grid;grid-template-columns:74px 1fr;gap:16px;padding:22px 0;align-items:center}.person+.person{border-top:1px solid var(--line)}.avatar{width:74px;height:74px;border-radius:50%;object-fit:cover;border:3px solid #eef3f8}.name{font-size:19px;font-weight:800;color:var(--navy);margin:0}.role{font-size:14px;color:var(--muted);margin:4px 0 13px}.person-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.person-actions .btn{min-height:44px;font-size:13px;padding:9px}
-    .footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.6;padding:26px 10px 0}.footer strong{color:var(--navy)}@media(max-width:520px){.page{width:min(100% - 20px,720px);padding-top:14px}.hero{padding:25px 16px}.primary-actions{grid-template-columns:1fr}.person{grid-template-columns:62px 1fr;gap:12px}.avatar{width:62px;height:62px}.person-actions{grid-template-columns:1fr}.team{padding:4px 16px}h1{font-size:26px}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#071b31">
+<meta name="description" content="Connect with Resolvent IT Services - schedule a call, join Google Meet, save contacts and view digital business cards.">
+<title>Connect | Resolvent IT Services</title>
+<style>
+:root{--navy:#071b31;--blue:#123b66;--green:#27a76f;--green2:#42c58a;--ink:#132238;--muted:#6c788a;--white:#fff;--line:#e7edf4}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#eef3f8}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 15% 8%,rgba(66,197,138,.18),transparent 30%),radial-gradient(circle at 85% 18%,rgba(55,117,178,.22),transparent 34%),linear-gradient(155deg,#f7fafc 0%,#edf3f8 55%,#e7eef6 100%)}
+.shell{width:min(920px,calc(100% - 30px));margin:0 auto;padding:34px 0 46px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#071b31 0%,#123b66 72%,#165b6a 100%);border-radius:30px;padding:38px 42px;color:#fff;box-shadow:0 28px 70px rgba(7,27,49,.22)}
+.hero:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:-120px;top:-145px;border:52px solid rgba(255,255,255,.055)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:20px;position:relative;z-index:1}
+.logo-wrap{background:#fff;border-radius:16px;padding:9px 15px;box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.logo{display:block;width:175px;max-width:100%;height:auto}
+.badge{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:#d8f7e8;border:1px solid rgba(110,230,167,.28);background:rgba(39,167,111,.14);padding:8px 12px;border-radius:999px}
+.hero-copy{position:relative;z-index:1;max-width:680px;padding:44px 0 29px}
+.hero h1{font-size:clamp(34px,6vw,55px);line-height:1.02;letter-spacing:-.035em;margin:0 0 15px}.hero h1 span{color:#66d9a0}
+.hero p{font-size:17px;line-height:1.7;color:#d5dfeb;margin:0;max-width:620px}
+.quick{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.action{display:flex;align-items:center;gap:14px;text-decoration:none;padding:17px 18px;border-radius:17px;transition:.2s ease}
+.action:hover{transform:translateY(-2px)}
+.action.calendar{background:#fff;color:var(--navy)}.action.meet{background:linear-gradient(135deg,var(--green),#218e61);color:#fff;box-shadow:0 12px 28px rgba(20,112,73,.25)}
+.icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;font-size:21px;background:rgba(18,59,102,.08);flex:0 0 auto}.meet .icon{background:rgba(255,255,255,.15)}
+.action strong{display:block;font-size:15px}.action small{display:block;margin-top:3px;opacity:.72;font-size:12px}
+.heading{text-align:center;padding:35px 10px 18px}.kicker{font-size:11px;font-weight:850;letter-spacing:.17em;text-transform:uppercase;color:var(--green)}.heading h2{font-size:28px;letter-spacing:-.02em;color:var(--navy);margin:7px 0}.heading p{color:var(--muted);margin:0}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{position:relative;overflow:hidden;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.8);border-radius:25px;padding:25px;box-shadow:0 16px 42px rgba(18,59,102,.09)}
+.card:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--blue),var(--green2))}
+.profile-row{display:flex;align-items:center;gap:17px;margin-bottom:21px}.avatar-wrap{position:relative}.avatar{width:84px;height:84px;object-fit:cover;border-radius:22px;border:4px solid #fff;box-shadow:0 8px 24px rgba(18,59,102,.15)}.online{position:absolute;right:-2px;bottom:3px;width:17px;height:17px;border-radius:50%;background:var(--green);border:3px solid #fff}
+.name{font-size:21px;font-weight:850;color:var(--navy);margin:0 0 4px}.role{font-size:13px;color:var(--muted);margin:0}.focus{font-size:11px;color:var(--green);font-weight:750;margin-top:7px}
+.card-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{min-height:48px;display:flex;align-items:center;justify-content:center;gap:7px;border-radius:13px;text-decoration:none;font-size:13px;font-weight:800;border:1px solid #d9e2ec;color:var(--blue);background:#fff;transition:.2s ease}.btn:hover{transform:translateY(-1px);border-color:#aebdcd}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.trust{margin-top:19px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.trust div{text-align:center;background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.8);border-radius:15px;padding:13px 8px;color:var(--muted);font-size:11px;font-weight:700}.trust b{display:block;color:var(--blue);font-size:13px;margin-bottom:2px}
+.footer{text-align:center;padding:28px 10px 0;color:#738094;font-size:12px;line-height:1.75}.footer strong{font-size:14px;color:var(--navy)}.footer a{color:var(--blue);text-decoration:none;font-weight:750}
+@media(max-width:680px){.shell{width:min(100% - 20px,920px);padding:10px 0 30px}.hero{border-radius:24px;padding:23px 18px}.top{align-items:flex-start}.logo{width:145px}.badge{font-size:9px;padding:7px 9px}.hero-copy{padding:35px 0 23px}.hero p{font-size:15px}.quick,.team-grid{grid-template-columns:1fr}.heading{padding-top:28px}.heading h2{font-size:24px}.card{padding:20px}.trust{grid-template-columns:1fr 1fr 1fr}.trust div{font-size:9px;padding:11px 4px}.trust b{font-size:11px}}
+@media(max-width:380px){.top{display:block}.badge{margin-top:13px}.card-actions{grid-template-columns:1fr}.avatar{width:72px;height:72px}}
+</style>
 </head>
 <body>
-  <main class="page">
-    <section class="hero">
-      <img class="logo" src="assets/images/Resolvent_Logo.jpg" alt="Resolvent IT Services">
-      <span class="eyebrow">Think Out of Box</span>
-      <h1>Connect with Resolvent</h1>
-      <p class="sub">Schedule a conversation, join us on Google Meet, or connect directly with our team.</p>
-      <div class="primary-actions">
-        <a class="btn primary" href="https://calendar.app.google/w95wGHSjmAQT57uCA" target="_blank" rel="noopener">📅 Schedule a Call</a>
-        <a class="btn meet" href="https://meet.google.com/ozu-gedz-ccw" target="_blank" rel="noopener">🎥 Google Meet</a>
-      </div>
-    </section>
+<main class="shell">
+<section class="hero">
+<div class="top">
+  <div class="logo-wrap"><img class="logo" src="assets/images/Resolvent_Logo.jpg" alt="Resolvent IT Services"></div>
+  <div class="badge">● Digital Connect</div>
+</div>
+<div class="hero-copy">
+  <h1>Let's build something <span>meaningful.</span></h1>
+  <p>Connect with Resolvent for AI, automation, software development, staffing and technology consulting. Choose the fastest way to start a conversation.</p>
+</div>
+<div class="quick">
+  <a class="action calendar" href="https://calendar.app.google/w95wGHSjmAQT57uCA" target="_blank" rel="noopener">
+    <span class="icon">📅</span><span><strong>Schedule a Call</strong><small>Choose a convenient date & time</small></span>
+  </a>
+  <a class="action meet" href="https://meet.google.com/ozu-gedz-ccw" target="_blank" rel="noopener">
+    <span class="icon">🎥</span><span><strong>Join Google Meet</strong><small>Open our meeting room</small></span>
+  </a>
+</div>
+</section>
 
-    <div class="section-title">
-      <span class="eyebrow">Our Team</span>
-      <h2>Who would you like to connect with?</h2>
-      <p>Save a contact or open the complete digital business card.</p>
-    </div>
+<section class="heading">
+  <span class="kicker">Our Team</span>
+  <h2>Connect with the right person</h2>
+  <p>Save their contact or explore the complete digital business card.</p>
+</section>
 
-    <section class="team">
-      <article class="person">
-        <img class="avatar" src="employees/neeraj-desai/profile.jpg" alt="Neeraj Desai">
-        <div>
-          <p class="name">Neeraj Desai</p>
-          <p class="role">Technical Consultant</p>
-          <div class="person-actions">
-            <a class="btn" href="employees/neeraj-desai/neeraj-desai.vcf">👤 Save Contact</a>
-            <a class="btn primary" href="employee.html?id=neeraj-desai">📱 View Digital Card</a>
-          </div>
-        </div>
-      </article>
-      <article class="person">
-        <img class="avatar" src="employees/neeraj-sahu/profile.jpg" alt="Neeraj Sahu">
-        <div>
-          <p class="name">Neeraj Sahu</p>
-          <p class="role">Business Consultant</p>
-          <div class="person-actions">
-            <a class="btn" href="employees/neeraj-sahu/neeraj-sahu.vcf">👤 Save Contact</a>
-            <a class="btn primary" href="employee.html?id=neeraj-sahu">📱 View Digital Card</a>
-          </div>
-        </div>
-      </article>
-    </section>
+<section class="team-grid">
+<article class="card">
+  <div class="profile-row">
+    <div class="avatar-wrap"><img class="avatar" src="employees/neeraj-desai/profile.jpg" alt="Neeraj Desai"><span class="online"></span></div>
+    <div><p class="name">Neeraj Desai</p><p class="role">Technical Consultant</p><div class="focus">AI • AUTOMATION • TECHNOLOGY</div></div>
+  </div>
+  <div class="card-actions">
+    <a class="btn" href="employees/neeraj-desai/neeraj-desai.vcf">👤 Save Contact</a>
+    <a class="btn primary" href="employee.html?id=neeraj-desai">View Digital Card →</a>
+  </div>
+</article>
 
-    <footer class="footer">
-      <strong>Resolvent IT Services Pvt. Ltd.</strong><br>
-      AI • Automation • Software Development • Staffing • Data Analytics<br>
-      Think Out of Box
-    </footer>
-  </main>
+<article class="card">
+  <div class="profile-row">
+    <div class="avatar-wrap"><img class="avatar" src="employees/neeraj-sahu/profile.jpg" alt="Neeraj Sahu"><span class="online"></span></div>
+    <div><p class="name">Neeraj Sahu</p><p class="role">Business Consultant</p><div class="focus">BUSINESS • RECRUITMENT • CLIENTS</div></div>
+  </div>
+  <div class="card-actions">
+    <a class="btn" href="employees/neeraj-sahu/neeraj-sahu.vcf">👤 Save Contact</a>
+    <a class="btn primary" href="employee.html?id=neeraj-sahu">View Digital Card →</a>
+  </div>
+</article>
+</section>
+
+<section class="trust">
+  <div><b>AI + Automation</b>Practical innovation</div>
+  <div><b>Technology</b>Scalable solutions</div>
+  <div><b>Partnership</b>Business focused</div>
+</section>
+
+<footer class="footer">
+  <strong>Resolvent IT Services Pvt. Ltd.</strong><br>
+  Think Out of Box<br>
+  <a href="https://www.resolvent.in" target="_blank" rel="noopener">www.resolvent.in</a>
+</footer>
+</main>
 </body>
 </html>
