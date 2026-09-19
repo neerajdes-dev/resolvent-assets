@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#123b66">
+  <meta name="description" content="Connect with Resolvent IT Services - schedule a call, join Google Meet, save contacts and view digital business cards.">
+  <title>Connect with Resolvent IT Services</title>
+  <style>
+    :root{--navy:#123b66;--navy2:#0a2948;--green:#38a169;--bg:#f4f7fb;--card:#fff;--text:#172033;--muted:#687386;--line:#e5eaf1}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(145deg,#edf4fb,#f8fafc);color:var(--text)}
+    .page{width:min(720px,calc(100% - 28px));margin:0 auto;padding:28px 0 48px}.hero,.team{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 50px rgba(18,59,102,.09)}
+    .hero{padding:30px 24px;text-align:center}.logo{width:min(210px,65%);height:auto;margin:0 auto 18px;display:block}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.13em;color:var(--green);text-transform:uppercase}
+    h1{font-size:30px;line-height:1.15;margin:9px 0 9px;color:var(--navy)}.sub{margin:0 auto 24px;color:var(--muted);line-height:1.6;max-width:520px}
+    .primary-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{min-height:52px;border-radius:14px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 15px;font-weight:750;border:1px solid #cdd8e5;color:var(--navy);background:#fff}
+    .btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}.btn.meet{background:var(--green);border-color:var(--green);color:#fff}.section-title{text-align:center;margin:30px 0 15px}.section-title h2{margin:5px 0;color:var(--navy);font-size:24px}.section-title p{margin:0;color:var(--muted)}
+    .team{padding:10px 22px}.person{display:grid;grid-template-columns:74px 1fr;gap:16px;padding:22px 0;align-items:center}.person+.person{border-top:1px solid var(--line)}.avatar{width:74px;height:74px;border-radius:50%;object-fit:cover;border:3px solid #eef3f8}.name{font-size:19px;font-weight:800;color:var(--navy);margin:0}.role{font-size:14px;color:var(--muted);margin:4px 0 13px}.person-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.person-actions .btn{min-height:44px;font-size:13px;padding:9px}
+    .footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.6;padding:26px 10px 0}.footer strong{color:var(--navy)}@media(max-width:520px){.page{width:min(100% - 20px,720px);padding-top:14px}.hero{padding:25px 16px}.primary-actions{grid-template-columns:1fr}.person{grid-template-columns:62px 1fr;gap:12px}.avatar{width:62px;height:62px}.person-actions{grid-template-columns:1fr}.team{padding:4px 16px}h1{font-size:26px}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <img class="logo" src="assets/images/Resolvent_Logo.jpg" alt="Resolvent IT Services">
+      <span class="eyebrow">Think Out of Box</span>
+      <h1>Connect with Resolvent</h1>
+      <p class="sub">Schedule a conversation, join us on Google Meet, or connect directly with our team.</p>
+      <div class="primary-actions">
+        <a class="btn primary" href="https://calendar.app.google/w95wGHSjmAQT57uCA" target="_blank" rel="noopener">📅 Schedule a Call</a>
+        <a class="btn meet" href="https://meet.google.com/ozu-gedz-ccw" target="_blank" rel="noopener">🎥 Google Meet</a>
+      </div>
+    </section>
+
+    <div class="section-title">
+      <span class="eyebrow">Our Team</span>
+      <h2>Who would you like to connect with?</h2>
+      <p>Save a contact or open the complete digital business card.</p>
+    </div>
+
+    <section class="team">
+      <article class="person">
+        <img class="avatar" src="employees/neeraj-desai/profile.jpg" alt="Neeraj Desai">
+        <div>
+          <p class="name">Neeraj Desai</p>
+          <p class="role">Technical Consultant</p>
+          <div class="person-actions">
+            <a class="btn" href="employees/neeraj-desai/neeraj-desai.vcf">👤 Save Contact</a>
+            <a class="btn primary" href="employee.html?id=neeraj-desai">📱 View Digital Card</a>
+          </div>
+        </div>
+      </article>
+      <article class="person">
+        <img class="avatar" src="employees/neeraj-sahu/profile.jpg" alt="Neeraj Sahu">
+        <div>
+          <p class="name">Neeraj Sahu</p>
+          <p class="role">Business Consultant</p>
+          <div class="person-actions">
+            <a class="btn" href="employees/neeraj-sahu/neeraj-sahu.vcf">👤 Save Contact</a>
+            <a class="btn primary" href="employee.html?id=neeraj-sahu">📱 View Digital Card</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <strong>Resolvent IT Services Pvt. Ltd.</strong><br>
+      AI • Automation • Software Development • Staffing • Data Analytics<br>
+      Think Out of Box
+    </footer>
+  </main>
+</body>
+</html>
