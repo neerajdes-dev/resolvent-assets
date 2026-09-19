@@ -1,107 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#071b31">
-<meta name="description" content="Connect with Resolvent IT Services - schedule a call, join Google Meet, save contacts and view digital business cards.">
-<title>Connect | Resolvent IT Services</title>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f4fbff"><title>Connect | Resolvent IT Services</title>
 <style>
-:root{--navy:#071b31;--blue:#123b66;--green:#27a76f;--green2:#42c58a;--ink:#132238;--muted:#6c788a;--white:#fff;--line:#e7edf4}
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#eef3f8}
-body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 15% 8%,rgba(66,197,138,.18),transparent 30%),radial-gradient(circle at 85% 18%,rgba(55,117,178,.22),transparent 34%),linear-gradient(155deg,#f7fafc 0%,#edf3f8 55%,#e7eef6 100%)}
-.shell{width:min(920px,calc(100% - 30px));margin:0 auto;padding:34px 0 46px}
-.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#071b31 0%,#123b66 72%,#165b6a 100%);border-radius:30px;padding:38px 42px;color:#fff;box-shadow:0 28px 70px rgba(7,27,49,.22)}
-.hero:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:-120px;top:-145px;border:52px solid rgba(255,255,255,.055)}
-.top{display:flex;align-items:center;justify-content:space-between;gap:20px;position:relative;z-index:1}
-.logo-wrap{background:#fff;border-radius:16px;padding:9px 15px;box-shadow:0 8px 22px rgba(0,0,0,.12)}
-.logo{display:block;width:175px;max-width:100%;height:auto}
-.badge{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:#d8f7e8;border:1px solid rgba(110,230,167,.28);background:rgba(39,167,111,.14);padding:8px 12px;border-radius:999px}
-.hero-copy{position:relative;z-index:1;max-width:680px;padding:44px 0 29px}
-.hero h1{font-size:clamp(34px,6vw,55px);line-height:1.02;letter-spacing:-.035em;margin:0 0 15px}.hero h1 span{color:#66d9a0}
-.hero p{font-size:17px;line-height:1.7;color:#d5dfeb;margin:0;max-width:620px}
-.quick{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.action{display:flex;align-items:center;gap:14px;text-decoration:none;padding:17px 18px;border-radius:17px;transition:.2s ease}
-.action:hover{transform:translateY(-2px)}
-.action.calendar{background:#fff;color:var(--navy)}.action.meet{background:linear-gradient(135deg,var(--green),#218e61);color:#fff;box-shadow:0 12px 28px rgba(20,112,73,.25)}
-.icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;font-size:21px;background:rgba(18,59,102,.08);flex:0 0 auto}.meet .icon{background:rgba(255,255,255,.15)}
-.action strong{display:block;font-size:15px}.action small{display:block;margin-top:3px;opacity:.72;font-size:12px}
-.heading{text-align:center;padding:35px 10px 18px}.kicker{font-size:11px;font-weight:850;letter-spacing:.17em;text-transform:uppercase;color:var(--green)}.heading h2{font-size:28px;letter-spacing:-.02em;color:var(--navy);margin:7px 0}.heading p{color:var(--muted);margin:0}
-.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.card{position:relative;overflow:hidden;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.8);border-radius:25px;padding:25px;box-shadow:0 16px 42px rgba(18,59,102,.09)}
-.card:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--blue),var(--green2))}
-.profile-row{display:flex;align-items:center;gap:17px;margin-bottom:21px}.avatar-wrap{position:relative}.avatar{width:84px;height:84px;object-fit:cover;border-radius:22px;border:4px solid #fff;box-shadow:0 8px 24px rgba(18,59,102,.15)}.online{position:absolute;right:-2px;bottom:3px;width:17px;height:17px;border-radius:50%;background:var(--green);border:3px solid #fff}
-.name{font-size:21px;font-weight:850;color:var(--navy);margin:0 0 4px}.role{font-size:13px;color:var(--muted);margin:0}.focus{font-size:11px;color:var(--green);font-weight:750;margin-top:7px}
-.card-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{min-height:48px;display:flex;align-items:center;justify-content:center;gap:7px;border-radius:13px;text-decoration:none;font-size:13px;font-weight:800;border:1px solid #d9e2ec;color:var(--blue);background:#fff;transition:.2s ease}.btn:hover{transform:translateY(-1px);border-color:#aebdcd}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
-.trust{margin-top:19px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.trust div{text-align:center;background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.8);border-radius:15px;padding:13px 8px;color:var(--muted);font-size:11px;font-weight:700}.trust b{display:block;color:var(--blue);font-size:13px;margin-bottom:2px}
-.footer{text-align:center;padding:28px 10px 0;color:#738094;font-size:12px;line-height:1.75}.footer strong{font-size:14px;color:var(--navy)}.footer a{color:var(--blue);text-decoration:none;font-weight:750}
-@media(max-width:680px){.shell{width:min(100% - 20px,920px);padding:10px 0 30px}.hero{border-radius:24px;padding:23px 18px}.top{align-items:flex-start}.logo{width:145px}.badge{font-size:9px;padding:7px 9px}.hero-copy{padding:35px 0 23px}.hero p{font-size:15px}.quick,.team-grid{grid-template-columns:1fr}.heading{padding-top:28px}.heading h2{font-size:24px}.card{padding:20px}.trust{grid-template-columns:1fr 1fr 1fr}.trust div{font-size:9px;padding:11px 4px}.trust b{font-size:11px}}
-@media(max-width:380px){.top{display:block}.badge{margin-top:13px}.card-actions{grid-template-columns:1fr}.avatar{width:72px;height:72px}}
-</style>
-</head>
-<body>
-<main class="shell">
-<section class="hero">
-<div class="top">
-  <div class="logo-wrap"><img class="logo" src="assets/images/Resolvent_Logo.jpg" alt="Resolvent IT Services"></div>
-  <div class="badge">● Digital Connect</div>
-</div>
-<div class="hero-copy">
-  <h1>Let's build something <span>meaningful.</span></h1>
-  <p>Connect with Resolvent for AI, automation, software development, staffing and technology consulting. Choose the fastest way to start a conversation.</p>
-</div>
-<div class="quick">
-  <a class="action calendar" href="https://calendar.app.google/w95wGHSjmAQT57uCA" target="_blank" rel="noopener">
-    <span class="icon">📅</span><span><strong>Schedule a Call</strong><small>Choose a convenient date & time</small></span>
-  </a>
-  <a class="action meet" href="https://meet.google.com/ozu-gedz-ccw" target="_blank" rel="noopener">
-    <span class="icon">🎥</span><span><strong>Join Google Meet</strong><small>Open our meeting room</small></span>
-  </a>
-</div>
-</section>
+:root{--navy:#06235f;--blue:#087cf0;--cyan:#08b8c9;--ink:#092665;--muted:#49638b;--line:#cfe5f5;--panel:rgba(255,255,255,.90)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:linear-gradient(135deg,#fff 0,#effaff 48%,#f9fdff 100%)}a{text-decoration:none;color:inherit}
+.page{width:min(1180px,calc(100% - 30px));margin:auto;padding:24px 0 20px}.hero{position:relative;min-height:510px;overflow:hidden;border-radius:0 0 28px 28px;background:radial-gradient(circle at 75% 40%,rgba(255,205,125,.40),transparent 24%),linear-gradient(125deg,#fff 5%,#eefaff 54%,#dff4ff 100%);box-shadow:0 14px 45px rgba(18,95,145,.08)}
+.hero:after{content:"";position:absolute;right:-4%;bottom:-24%;width:52%;height:85%;background:linear-gradient(145deg,rgba(8,124,240,.04),rgba(8,184,201,.13));clip-path:polygon(55% 0,100% 45%,85% 100%,0 86%);transform:rotate(-8deg)}
+.nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:25px 34px}.logo{width:235px;max-width:44vw}.navlinks{font-size:11px;letter-spacing:.22em;font-weight:700}.navlinks span{margin:0 9px;color:#b1bfd1}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:25px;padding:32px 36px 42px}.eyebrow{font-size:11px;letter-spacing:.28em;font-weight:800;color:#0a64cb}.hero h1{font-size:clamp(48px,6vw,78px);line-height:.94;letter-spacing:-.055em;margin:22px 0 13px;color:#06235f}.hero h1 span{background:linear-gradient(90deg,#087a9b,#087cf0);background-clip:text;-webkit-background-clip:text;color:transparent}.tag{font-size:27px;line-height:1.25;margin:0;color:#102c6e}.values{display:flex;gap:26px;margin-top:35px;flex-wrap:wrap}.value{display:flex;gap:9px;align-items:center;font-size:12px;font-weight:750;color:#0758ad}.value i{font-style:normal;font-size:25px}.vision{align-self:center;padding-left:38px}.vision h2{font-size:46px;line-height:.9;margin:0;color:#06235f}.vision h2 span{color:#0783ef}.vision .bar{width:54px;height:4px;background:linear-gradient(90deg,#087cf0,#0eb9b5);margin:18px 0}.vision p{font-size:20px;line-height:1.35;margin:0}.quote{margin-top:40px;padding-left:17px;border-left:2px solid #fff;font-size:16px;line-height:1.4}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}.panel,.team,.solutions{background:var(--panel);border:1px solid rgba(190,224,244,.8);border-radius:20px;box-shadow:0 10px 30px rgba(23,111,163,.07)}.panel{padding:22px}.titleline{display:flex;align-items:center;gap:14px;margin-bottom:16px}.titleline h2{font-size:25px;margin:0;white-space:nowrap}.rule{height:2px;flex:1;background:linear-gradient(90deg,#1682ed,transparent)}.micro{font-size:8px;letter-spacing:.2em;color:#0870d8;font-weight:800;white-space:nowrap}
+.meetbtn{display:flex;align-items:center;gap:16px;background:linear-gradient(90deg,#e9f8ff,#f5fcff);padding:15px;border-radius:15px;margin-top:12px}.meeticon{width:55px;height:55px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:25px;background:linear-gradient(135deg,#0790f4,#045edc);box-shadow:0 7px 17px rgba(0,112,225,.25)}.meetbtn:nth-of-type(2) .meeticon{background:linear-gradient(135deg,#0bb7c5,#006b80)}.meettext{flex:1}.meettext b{font-size:18px}.meettext small{display:block;margin-top:4px;color:var(--muted)}.arrow{font-size:25px;color:#72aeca}
+.about p{line-height:1.55;color:#173c78;margin:8px 0 20px}.stats{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}.stat+.stat{border-left:1px solid #9cc9ea}.stat b{display:block;font-size:25px;color:#06398f}.stat span{font-size:11px}
+.team{margin-top:16px;padding:18px}.teamgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.person{border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;grid-template-columns:145px 1fr;gap:16px;background:linear-gradient(135deg,#fff,#f9fdff)}.photo{width:145px;height:160px;object-fit:cover;border-radius:12px}.person h3{font-size:20px;margin:4px 0}.role{margin:0 0 13px;color:#173878}.intro{font-size:13px;line-height:1.5;color:#3c5a83}.actions{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{min-height:45px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;border:1.5px solid #087cf0;color:#0764c6}.btn.primary{color:#fff;border:0;background:linear-gradient(90deg,#0753a9,#087cf0)}
+.solutions{margin-top:16px;padding:18px}.solutiongrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.solution{min-height:83px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:10px;padding:12px;text-align:left;font-size:12px;font-weight:750}.solution i{font-style:normal;font-size:27px}.solution:nth-child(1){background:#eaf8ff}.solution:nth-child(2){background:#e9fbf8}.solution:nth-child(3){background:#f1edff}.solution:nth-child(4){background:#fff5e9}.solution:nth-child(5){background:#fff0f5}
+.contact{margin-top:16px;background:linear-gradient(90deg,#064a87,#006ba1);color:#fff;border-radius:15px;padding:19px 28px;display:grid;grid-template-columns:1.05fr 1fr 1.4fr;align-items:center;gap:18px}.brand strong{font-size:23px}.brand small{display:block}.contact a,.address{font-size:12px;line-height:1.5}.contactitem{padding-left:18px;border-left:1px solid rgba(255,255,255,.5)}.contactitem b{display:block;font-size:12px;margin-bottom:3px}.footer{display:flex;justify-content:space-between;align-items:center;padding:23px 5px 0;font-size:10px;color:#2b5d9d}.script{font-family:cursive;font-size:22px;font-style:italic;color:#0756c5}
+@media(max-width:760px){.page{width:min(100% - 16px,1180px);padding-top:8px}.hero{min-height:auto}.nav{padding:18px}.logo{width:180px}.navlinks{display:none}.hero-grid{grid-template-columns:1fr;padding:22px 20px 30px}.hero h1{font-size:48px}.tag{font-size:21px}.vision{padding:12px 0 0}.vision h2{font-size:38px}.values{gap:14px;margin-top:25px}.two,.teamgrid{grid-template-columns:1fr}.titleline .micro{display:none}.person{grid-template-columns:95px 1fr}.photo{width:95px;height:110px}.solutiongrid{grid-template-columns:1fr 1fr}.solution:last-child{grid-column:1/-1}.contact{grid-template-columns:1fr;padding:20px}.contactitem{padding:12px 0 0;border-left:0;border-top:1px solid rgba(255,255,255,.35)}.footer{display:block;text-align:center}.script{margin-top:8px}.stats{gap:2px}.stat b{font-size:20px}}
+</style></head><body><main class="page">
+<section class="hero"><nav class="nav"><img class="logo" src="assets/images/Resolvent_Logo.jpg" alt="Resolvent"><div class="navlinks">PEOPLE <span>|</span> TECHNOLOGY <span>|</span> SOLUTIONS <span>|</span> IMPACT</div></nav>
+<div class="hero-grid"><div><div class="eyebrow">LET'S BUILD A SMARTER TOMORROW</div><h1>Let’s Build<br>What’s <span>Next.</span></h1><p class="tag">Your goals. Our technology.<br>A smarter tomorrow — together.</p><div class="values"><div class="value"><i>💡</i>Innovate<br>Faster</div><div class="value"><i>⚙️</i>Operate<br>Smarter</div><div class="value"><i>👥</i>Grow<br>Together</div><div class="value"><i>🛡️</i>Build a<br>Better Tomorrow</div></div></div>
+<div class="vision"><h2>HIGHER<br><span>TOGETHER</span></h2><div class="bar"></div><p>Technology.<br>People.<br>Progress.<br>A Smarter Tomorrow.</p><div class="quote">“Ideas<br>Automate<br>Transform<br>Grow...<br>Together.”</div></div></div></section>
 
-<section class="heading">
-  <span class="kicker">Our Team</span>
-  <h2>Connect with the right person</h2>
-  <p>Save their contact or explore the complete digital business card.</p>
-</section>
+<section class="two"><div class="panel"><div class="titleline"><h2>Book a Meeting</h2><div class="rule"></div><span class="micro">LET'S TALK OPPORTUNITIES.</span></div>
+<a class="meetbtn" href="https://calendar.app.google/w95wGHSjmAQT57uCA" target="_blank" rel="noopener"><span class="meeticon">▣</span><span class="meettext"><b>Schedule a Call</b><small>Choose a time that works for you.</small></span><span class="arrow">→</span></a>
+<a class="meetbtn" href="https://meet.google.com/ozu-gedz-ccw" target="_blank" rel="noopener"><span class="meeticon">▹</span><span class="meettext"><b>Join Google Meet</b><small>Meet with our team virtually.</small></span><span class="arrow">→</span></a></div>
+<div class="panel about"><div class="titleline"><h2>About Resolvent</h2><div class="rule"></div><span class="micro">TECHNOLOGY FOR REAL IMPACT</span></div><p>Resolvent IT Services Pvt. Ltd. is a technology-driven solutions partner helping businesses automate, analyze, and grow. We deliver intelligent automation, data-centric solutions, software engineering and digital transformation with a focus on measurable outcomes.</p><div class="stats"><div class="stat"><b>10+</b><span>Experts</span></div><div class="stat"><b>7+</b><span>Industries</span></div><div class="stat"><b>50+</b><span>Solutions</span></div><div class="stat"><b>100%</b><span>Client Focus</span></div></div></div></section>
 
-<section class="team-grid">
-<article class="card">
-  <div class="profile-row">
-    <div class="avatar-wrap"><img class="avatar" src="employees/neeraj-desai/profile.jpg" alt="Neeraj Desai"><span class="online"></span></div>
-    <div><p class="name">Neeraj Desai</p><p class="role">Technical Consultant</p><div class="focus">AI • AUTOMATION • TECHNOLOGY</div></div>
-  </div>
-  <div class="card-actions">
-    <a class="btn" href="employees/neeraj-desai/neeraj-desai.vcf">👤 Save Contact</a>
-    <a class="btn primary" href="employee.html?id=neeraj-desai">View Digital Card →</a>
-  </div>
-</article>
+<section class="team"><div class="titleline"><h2>Our Team to Connect</h2><div class="rule"></div><span class="micro">REAL PEOPLE. MEANINGFUL CONVERSATIONS.</span></div><div class="teamgrid">
+<article class="person"><img class="photo" src="employees/neeraj-desai/profile.jpg" alt="Neeraj Desai"><div><h3>Neeraj Desai</h3><p class="role">Technical Consultant</p><p class="intro">Helping businesses simplify operations through automation, software, data, and practical technology solutions.</p></div><div class="actions"><a class="btn primary" href="employees/neeraj-desai/neeraj-desai.vcf">👤 Save Contact</a><a class="btn" href="employee.html?id=neeraj-desai">▣ View Digital Card</a></div></article>
+<article class="person"><img class="photo" src="employees/neeraj-sahu/profile.jpg" alt="Neeraj Sahu"><div><h3>Neeraj Sahu</h3><p class="role">Business Consultant</p><p class="intro">Helping organizations build strong teams, improve recruitment outcomes, and identify the right business solutions.</p></div><div class="actions"><a class="btn primary" href="employees/neeraj-sahu/neeraj-sahu.vcf">👤 Save Contact</a><a class="btn" href="employee.html?id=neeraj-sahu">▣ View Digital Card</a></div></article>
+</div></section>
 
-<article class="card">
-  <div class="profile-row">
-    <div class="avatar-wrap"><img class="avatar" src="employees/neeraj-sahu/profile.jpg" alt="Neeraj Sahu"><span class="online"></span></div>
-    <div><p class="name">Neeraj Sahu</p><p class="role">Business Consultant</p><div class="focus">BUSINESS • RECRUITMENT • CLIENTS</div></div>
-  </div>
-  <div class="card-actions">
-    <a class="btn" href="employees/neeraj-sahu/neeraj-sahu.vcf">👤 Save Contact</a>
-    <a class="btn primary" href="employee.html?id=neeraj-sahu">View Digital Card →</a>
-  </div>
-</article>
-</section>
+<section class="solutions"><div class="titleline"><h2>Our Solutions</h2><div class="rule"></div><span class="micro">SOLVING TODAY. BUILDING TOMORROW.</span></div><div class="solutiongrid"><div class="solution"><i>🤖</i>Intelligent<br>Automation</div><div class="solution"><i>▥</i>Data &<br>Analytics</div><div class="solution"><i>🧠</i>AI Solutions</div><div class="solution"><i>💡</i>Technology<br>Consulting</div><div class="solution"><i>☁️</i>Digital<br>Transformation</div></div></section>
 
-<section class="trust">
-  <div><b>AI + Automation</b>Practical innovation</div>
-  <div><b>Technology</b>Scalable solutions</div>
-  <div><b>Partnership</b>Business focused</div>
-</section>
-
-<footer class="footer">
-  <strong>Resolvent IT Services Pvt. Ltd.</strong><br>
-  Think Out of Box<br>
-  <a href="https://www.resolvent.in" target="_blank" rel="noopener">www.resolvent.in</a>
-</footer>
-</main>
-</body>
-</html>
+<section class="contact"><div class="brand"><strong>RESOLVENT</strong><small>Think out of Box</small></div><div class="contactitem"><b>🌐 WEBSITE</b><a href="https://www.resolvent.in" target="_blank" rel="noopener">www.resolvent.in</a><br><b style="margin-top:7px">in LINKEDIN</b><a href="https://www.linkedin.com/company/resolvent-in" target="_blank" rel="noopener">linkedin.com/company/resolvent-in</a></div><div class="contactitem"><b>📍 OUR OFFICE</b><span class="address">Floor No. 05, Office No. 501, Balaji Business Center, Pune–Bengaluru Highway, Baner, Pune – 411045, Maharashtra, India</span></div></section>
+<footer class="footer"><span>© 2026 Resolvent IT Services Pvt. Ltd. &nbsp; | &nbsp; Let's Build a Smarter Tomorrow.</span><span class="script">Ideas Today. Impact Tomorrow.</span></footer>
+</main></body></html>
