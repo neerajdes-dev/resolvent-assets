@@ -1,0 +1,6 @@
+/* Phase 7 premium reading progress */
+.rv-progress{height:4px;z-index:110;background:linear-gradient(90deg,#3eac8b,#8cddb0,#d5f5c6);box-shadow:0 0 12px rgba(116,213,162,.45)}
+.rv-progress-meter{position:fixed;top:13px;right:13px;z-index:111;padding:8px 11px;border-radius:20px;background:#102c34;color:#e3f9e9;font:700 12px system-ui;box-shadow:0 8px 24px #0003;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .2s,transform .2s}
+.rv-progress-meter.rv-progress-visible{opacity:1;transform:none}
+.rv-progress-meter.rv-progress-complete{background:#175b45}
+@media(prefers-reduced-motion:reduce){.rv-progress-meter{transition:none;transform:none}.rv-progress{box-shadow:none}}
