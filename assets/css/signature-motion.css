@@ -1,0 +1,37 @@
+/* Resolvent Signature: premium visual motion, preserving existing assets */
+:root{--rv-mint:#a4d39b;--rv-navy:#0c1c2c}
+html{scroll-padding-top:12px}
+body{background:linear-gradient(155deg,#edf6f4,#edf3f9 42%,#e7f1f3)}
+.hero{isolation:isolate;background:linear-gradient(130deg,#081929,#12354a 56%,#17483f);box-shadow:0 24px 60px rgba(5,24,38,.24)}
+.hero::after{content:"";position:absolute;inset:-45%;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 25% 35%,rgba(121,220,170,.28),transparent 35%),radial-gradient(ellipse at 75% 65%,rgba(77,161,196,.25),transparent 38%);animation:rv-aurora 16s ease-in-out infinite alternate}
+@keyframes rv-aurora{from{transform:translate3d(-5%,0,0) rotate(-7deg)}to{transform:translate3d(6%,3%,0) rotate(9deg)}}
+.profile-card{box-shadow:0 20px 48px rgba(0,12,22,.2);border-color:rgba(255,255,255,.28)}
+.profile{outline:1px solid rgba(164,211,155,.5);outline-offset:6px}
+.profile-card .profile{animation:rv-photo-glow 4.5s ease-in-out 1s infinite}
+.actions .btn{position:relative;isolation:isolate;overflow:hidden;border-radius:15px;box-shadow:0 7px 20px rgba(18,59,102,.06);transform-style:preserve-3d}
+.actions .btn::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--rv-x,50%) var(--rv-y,50%),rgba(164,211,155,.24),transparent 65%);opacity:0;transition:opacity .25s}
+.actions .btn:hover::after{opacity:1}
+.actions .btn.primary{background:linear-gradient(125deg,#123b66,#195e63);border-color:#326b65}
+.actions .btn.primary::before{content:"";position:absolute;top:-65%;bottom:-65%;left:-75%;width:36%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transform:rotate(20deg);pointer-events:none}
+.actions .btn.primary.rv-sweep::before{animation:rv-sweep 1.15s ease-out .4s 1}
+@keyframes rv-sweep{to{left:150%}}
+.section{border-radius:24px;box-shadow:0 12px 35px rgba(12,35,54,.07)}
+.section.reveal{transition:opacity .7s cubic-bezier(.2,.75,.25,1),transform .7s cubic-bezier(.2,.75,.25,1)}
+.section.reveal.visible{opacity:1;transform:none}
+.section h2{letter-spacing:-.025em}
+.feature,.service,.model{position:relative;overflow:hidden;transform-style:preserve-3d;transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease}
+.feature::before,.service::before,.model::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--rv-x,50%) var(--rv-y,50%),rgba(127,191,115,.14),transparent 65%);opacity:0;transition:opacity .25s}
+.feature:hover::before,.service:hover::before,.model:hover::before{opacity:1}
+#technologies .chip{animation:rv-chip-in .55s ease both;animation-play-state:paused}
+#technologies.rv-seen .chip{animation-play-state:running}
+#technologies .chip:nth-child(5n+1){animation-delay:.05s}
+#technologies .chip:nth-child(5n+2){animation-delay:.12s}
+#technologies .chip:nth-child(5n+3){animation-delay:.19s}
+#technologies .chip:nth-child(5n+4){animation-delay:.26s}
+#technologies .chip:nth-child(5n){animation-delay:.33s}
+@keyframes rv-chip-in{from{opacity:0;transform:translateY(10px) scale(.94)}to{opacity:1;transform:none}}
+.client-track{animation-duration:38s}
+.client-slider:focus-within .client-track,.client-slider:hover .client-track{animation-play-state:paused}
+.rv-progress{position:fixed;top:0;left:0;width:100%;height:3px;z-index:100;pointer-events:none;background:linear-gradient(90deg,#78bc84,#c0eac2);transform:scaleX(0);transform-origin:left center;will-change:transform}
+@media(hover:hover){.service:hover,.feature:hover,.model:hover{box-shadow:0 14px 30px rgba(18,59,102,.12);border-color:var(--a)}}
+@media(prefers-reduced-motion:reduce){.hero::after,.profile-card,.profile-card .profile,.hero-focus span,#technologies .chip,.client-track{animation:none!important}.section.reveal{opacity:1!important;transform:none!important;transition:none!important}.feature,.service,.model,.actions .btn{transition:none!important;transform:none!important}.actions .btn.primary.rv-sweep::before{animation:none!important}}
