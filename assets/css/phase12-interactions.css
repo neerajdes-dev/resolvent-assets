@@ -1,0 +1,15 @@
+/* Phase 12.3 — responsive interaction polish, minimal animation overhead */
+:root{--rv-ease:cubic-bezier(.2,.75,.25,1)}
+.actions .btn,.button-stack .btn,.submit-btn,.mobile-action-bar a{transition:transform .18s var(--rv-ease),background-color .2s ease,border-color .2s ease,box-shadow .2s ease;touch-action:manipulation}
+.actions .btn:focus-visible,.button-stack .btn:focus-visible,.mobile-action-bar a:focus-visible{outline:3px solid var(--a);outline-offset:3px}
+@media(hover:hover) and (pointer:fine){.actions .btn:hover,.button-stack .btn:hover{border-color:var(--a);box-shadow:0 12px 26px rgba(36,120,100,.17)}.mobile-action-bar a:hover{background:rgba(115,199,164,.12)}}
+@media(hover:none){.actions .btn:active,.button-stack .btn:active,.submit-btn:active{transform:scale(.975)}.mobile-action-bar a:active{transform:scale(.96);background:rgba(115,199,164,.15)}}
+.section.reveal{transition:opacity .48s var(--rv-ease),transform .48s var(--rv-ease)}
+.section.reveal.visible{opacity:1;transform:none}
+.mobile-action-bar{isolation:isolate}
+.mobile-action-bar a{position:relative;min-width:0;border-radius:12px}
+.mobile-action-bar a span{line-height:1.25}
+.rv-progress{height:3px;box-shadow:0 0 8px rgba(117,220,169,.25)}
+.rv-progress-meter{font-variant-numeric:tabular-nums}
+@media(max-width:560px){.mobile-action-bar{padding:3px;gap:2px}.mobile-action-bar a{min-height:56px}.section.reveal{transition-duration:.38s}}
+@media(prefers-reduced-motion:reduce){.actions .btn,.button-stack .btn,.submit-btn,.mobile-action-bar a,.section.reveal{transition:none!important}.section.reveal{opacity:1!important;transform:none!important}}
