@@ -1,0 +1,13 @@
+/* Phase 8: accessibility, usability and mobile performance */
+.skip-link{position:fixed;top:8px;left:8px;z-index:1000;padding:12px 16px;border-radius:12px;background:#123b46;color:#fff;transform:translateY(-160%);text-decoration:none}
+.skip-link:focus{transform:translateY(0)}
+:where(a,button,input,select,textarea):focus-visible{outline:3px solid #4ab887;outline-offset:3px}
+@media(max-width:560px){
+.section{content-visibility:auto;contain-intrinsic-size:auto 320px}
+.callback-section{content-visibility:visible}
+.mobile-action-bar a{min-height:48px}
+}
+@media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto!important}
+.rv-progress,.rv-progress-meter{transition:none!important}
+}
