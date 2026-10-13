@@ -1,0 +1,16 @@
+/* Resolvent glass experience v10 — preserves the official logo artwork */
+:root{--glass-fill:rgba(255,255,255,.67);--glass-edge:rgba(255,255,255,.76);--glass-shadow:0 18px 50px rgba(18,61,66,.12)}
+[data-theme="dark"]{--glass-fill:rgba(13,36,48,.68);--glass-edge:rgba(180,240,210,.19);--glass-shadow:0 22px 56px rgba(0,5,14,.34)}
+body{isolation:isolate}
+.rv-logo-watermark{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;display:grid;place-items:center}
+.rv-logo-watermark::before{content:"";position:absolute;width:min(95vw,700px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(123,206,157,.16),rgba(81,159,175,.07) 45%,transparent 72%);filter:blur(20px)}
+.rv-logo-watermark img{width:min(72vw,540px);max-height:75vh;object-fit:contain;opacity:.085;filter:grayscale(.2) drop-shadow(0 0 24px rgba(116,200,164,.16));animation:rv-logo-turn 100s linear infinite;transform-origin:center;will-change:transform}
+[data-theme="dark"] .rv-logo-watermark img{opacity:.12}
+@keyframes rv-logo-turn{to{transform:rotate(360deg)}}
+.shell{z-index:2}
+.section,.actions .btn,.mobile-action-bar{background:var(--glass-fill);border:1px solid var(--glass-edge);box-shadow:var(--glass-shadow);-webkit-backdrop-filter:blur(18px) saturate(125%);backdrop-filter:blur(18px) saturate(125%)}
+.profile-card{background:linear-gradient(145deg,rgba(255,255,255,.19),rgba(255,255,255,.07));border:1px solid rgba(245,255,250,.33);-webkit-backdrop-filter:blur(22px) saturate(125%);backdrop-filter:blur(22px) saturate(125%)}
+.feature,.service,.model,.testimonial,.highlight,.chip{background:color-mix(in srgb,var(--glass-fill) 68%,transparent);border-color:var(--glass-edge)}
+.actions .btn.primary,.submit-btn.primary{background:linear-gradient(135deg,#164d55,#20745d);color:#fff;border-color:rgba(157,230,184,.42)}
+@media(max-width:560px){.rv-logo-watermark img{width:82vw;opacity:.075}.section,.actions .btn,.mobile-action-bar{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}}
+@media(prefers-reduced-motion:reduce){.rv-logo-watermark img{animation:none;will-change:auto}}
