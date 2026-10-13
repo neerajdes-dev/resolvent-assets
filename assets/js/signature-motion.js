@@ -3,10 +3,19 @@
  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
  const progress=document.createElement("div");
  progress.className="rv-progress";progress.setAttribute("aria-hidden","true");document.body.appendChild(progress);
+ const meter=document.createElement("div");meter.className="rv-progress-meter";meter.setAttribute("aria-hidden","true");meter.textContent="0%";document.body.appendChild(meter);
  let pending=false;
- function updateProgress(){pending=false;const max=document.documentElement.scrollHeight-innerHeight;progress.style.transform="scaleX("+(max>0?Math.max(0,Math.min(1,scrollY/max)):0)+")"}
+ function updateProgress(){
+  pending=false;
+  const max=Math.max(0,document.documentElement.scrollHeight-innerHeight);
+  const ratio=max>0?Math.max(0,Math.min(1,scrollY/max)):1;
+  progress.style.transform="scaleX("+ratio+")";
+  meter.textContent=Math.round(ratio*100)+"%";
+  meter.classList.toggle("rv-progress-visible",scrollY>100&&max>0);
+  meter.classList.toggle("rv-progress-complete",ratio>=.999);
+ }
  addEventListener("scroll",()=>{if(!pending){pending=true;requestAnimationFrame(updateProgress)}},{passive:true});
- addEventListener("resize",updateProgress,{passive:true});updateProgress();
+ addEventListener("resize",updateProgress,{passive:true});addEventListener("load",updateProgress,{once:true});updateProgress();
  if(reduced)return;
  const observer=("IntersectionObserver" in window)?new IntersectionObserver(entries=>{for(const e of entries){if(!e.isIntersecting)continue;e.target.classList.add("rv-seen");if(e.target.id==="actions"){e.target.querySelectorAll(".btn.primary").forEach(b=>b.classList.add("rv-sweep"))}observer.unobserve(e.target)}},{threshold:.18}):null;
  function attach(){
