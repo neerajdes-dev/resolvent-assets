@@ -18,7 +18,7 @@ function applyTheme(theme){
   document.documentElement.setAttribute("data-theme",theme);
   localStorage.setItem("resolvent-theme",theme);
   const button=document.getElementById("theme-toggle");
-  if(button) button.textContent=theme==="dark"?"☀️":"🌙";
+  if(button){button.textContent=theme==="dark"?"☀️":"🌙";button.setAttribute("aria-pressed",String(theme==="dark"));button.setAttribute("aria-label",theme==="dark"?"Switch to light theme":"Switch to dark theme");}
 }
 
 function toggleTheme(){
@@ -69,13 +69,13 @@ async function submitLead(event,employee){
     employeeId:employee.id,
     employeeName:employee.name,
     employeeEmail:employee.notificationEmail,
-    name:form.name.value.trim(),
-    company:form.company.value.trim(),
-    email:form.email.value.trim(),
-    phone:form.phone.value.trim(),
-    service:form.service.value,
-    requirement:form.requirement.value.trim(),
-    source:form.source.value,
+    name:form.elements.namedItem("name").value.trim(),
+    company:form.elements.namedItem("company").value.trim(),
+    email:form.elements.namedItem("email").value.trim(),
+    phone:form.elements.namedItem("phone").value.trim(),
+    service:form.elements.namedItem("service").value,
+    requirement:form.elements.namedItem("requirement").value.trim(),
+    source:form.elements.namedItem("source").value,
     pageUrl:location.href
   };
 
@@ -96,8 +96,7 @@ async function submitLead(event,employee){
       body:JSON.stringify(payload)
     });
 
-    form.reset();
-    showStatus("success","Thank you. Your request has been received and our team will contact you shortly.");
+    showStatus("success","Your request was sent. Please note that delivery cannot be confirmed automatically; our team will follow up if received.");
     trackEvent("callback_request",{employee:employee.name,service:payload.service,source:payload.source});
   }catch(error){
     console.error(error);
