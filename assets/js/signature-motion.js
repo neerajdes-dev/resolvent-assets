@@ -16,7 +16,7 @@
   else{actions?.querySelectorAll(".btn.primary").forEach(b=>b.classList.add("rv-sweep"));tech?.classList.add("rv-seen")}
  }
  attach();
- const watch=new MutationObserver(attach);
+ const watch=new MutationObserver(()=>{attach();const a=document.getElementById("actions");if(a?.classList.contains("rv-seen"))a.querySelectorAll(".btn.primary").forEach(b=>b.classList.add("rv-sweep"))});
  const actions=document.getElementById("actions");
  if(actions)watch.observe(actions,{childList:true});
  const tech=document.getElementById("technologies");
