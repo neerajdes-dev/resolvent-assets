@@ -1,0 +1,14 @@
+/* Resolvent v11: futuristic rotating technology rings behind frosted glass */
+.rv-tech-backdrop{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;display:grid;place-items:center;isolation:isolate}
+.rv-tech-backdrop::before{content:"";position:absolute;width:min(110vmax,1100px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(98,219,182,.12) 0 14%,transparent 36%),repeating-radial-gradient(circle,transparent 0 47px,rgba(128,233,209,.12) 48px 49px,transparent 50px 90px);mask-image:radial-gradient(circle,#000 25%,transparent 75%);opacity:.8}
+.rv-tech-ring{position:absolute;width:min(88vmin,740px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(112,222,199,.24);background:repeating-conic-gradient(from 0deg,rgba(113,237,198,.36) 0deg 1deg,transparent 1deg 19deg,rgba(83,175,204,.2) 20deg 21deg,transparent 21deg 40deg);mask-image:radial-gradient(circle,transparent 0 47%,#000 48% 50%,transparent 51%);animation:rv-tech-rotate 100s linear infinite}
+.rv-tech-ring:nth-child(2){width:min(66vmin,550px);animation-duration:140s;animation-direction:reverse;opacity:.8;transform-origin:center}
+.rv-tech-ring:nth-child(3){width:min(105vmin,880px);animation-duration:180s;opacity:.48}
+.rv-tech-core{position:absolute;width:min(35vmin,270px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(133,236,204,.2);box-shadow:0 0 75px rgba(68,180,156,.12),inset 0 0 60px rgba(72,155,185,.09)}
+@keyframes rv-tech-rotate{to{rotate:360deg}}
+[data-theme="light"] .rv-tech-backdrop{opacity:.52}
+[data-theme="dark"] .rv-tech-backdrop{opacity:.9}
+.shell{position:relative;z-index:2}
+.section,.actions .btn,.mobile-action-bar{background:var(--glass-fill,rgba(255,255,255,.7));border:1px solid var(--glass-edge,rgba(255,255,255,.6));box-shadow:var(--glass-shadow,0 18px 50px rgba(0,0,0,.12));-webkit-backdrop-filter:blur(18px) saturate(130%);backdrop-filter:blur(18px) saturate(130%)}
+@media(max-width:560px){.rv-tech-ring{width:95vw}.rv-tech-ring:nth-child(2){width:70vw}.rv-tech-ring:nth-child(3){width:120vw}.section,.mobile-action-bar{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}}
+@media(prefers-reduced-motion:reduce){.rv-tech-ring{animation:none!important}}
