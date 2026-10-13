@@ -20,20 +20,22 @@
   <link rel="stylesheet" href="assets/css/eight-motion-complete.css?v=5.2.0">
   <link rel="stylesheet" href="assets/css/mobile-premium.css?v=6.0.0">
   <link rel="stylesheet" href="assets/css/phase7-scroll-progress.css?v=7.0.0">
+  <link rel="stylesheet" href="assets/css/phase8-experience.css?v=8.0.0">
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <div class="hero-orb orb-one"></div>
 <div class="hero-orb orb-two"></div>
 
-<div class="shell">
+<main class="shell" id="main-content">
   <header class="hero">
     <div class="tools">
-      <button id="theme-toggle" class="icon-btn" type="button" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+      <button id="theme-toggle" class="icon-btn" type="button" onclick="toggleTheme()" aria-label="Toggle theme" aria-pressed="false">🌙</button>
     </div>
 
     <div class="profile-card">
-      <img id="profile-photo" class="profile" src="" alt="">
-      <img class="logo" src="assets/images/Resolvent_Logo.jpg" alt="Resolvent IT Services">
+      <img id="profile-photo" class="profile" src="" alt="" fetchpriority="high" decoding="async">
+      <img class="logo" src="assets/images/Resolvent_Logo.jpg" alt="Resolvent IT Services" decoding="async">
       <h1 id="employee-name"></h1>
       <p id="designation" class="role"></p>
       <p id="company-name" class="company"></p>
@@ -137,14 +139,14 @@
 
     <form id="callback-form">
       <div class="form-grid">
-        <div class="field"><label>Name</label><input name="name" autocomplete="name" required></div>
-        <div class="field"><label>Company</label><input name="company" autocomplete="organization"></div>
-        <div class="field"><label>Email</label><input name="email" type="email" autocomplete="email" required></div>
-        <div class="field"><label>Phone</label><input name="phone" type="tel" autocomplete="tel" required></div>
+        <div class="field"><label for="rv-name">Name</label><input id="rv-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="rv-company">Company</label><input id="rv-company" name="company" autocomplete="organization"></div>
+        <div class="field"><label for="rv-email">Email</label><input id="rv-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="rv-phone">Phone</label><input id="rv-phone" name="phone" type="tel" autocomplete="tel" required></div>
 
         <div class="field full">
-          <label>Service Required</label>
-          <select name="service" required>
+          <label for="rv-service">Service Required</label>
+          <select id="rv-service" name="service" required>
             <option value="">Select a service</option>
             <option>AI & Business Automation</option>
             <option>Custom Software Development</option>
@@ -158,8 +160,8 @@
         </div>
 
         <div class="field full">
-          <label>How did you find us?</label>
-          <select name="source" required>
+          <label for="rv-source">How did you find us?</label>
+          <select id="rv-source" name="source" required>
             <option>QR Code</option>
             <option>Visiting Card</option>
             <option>LinkedIn</option>
@@ -170,7 +172,7 @@
           </select>
         </div>
 
-        <div class="field full"><label>Requirement</label><textarea name="requirement" required></textarea></div>
+        <div class="field full"><label for="rv-requirement">Requirement</label><textarea id="rv-requirement" name="requirement" required></textarea></div>
         <div class="field full"><button class="btn primary submit-btn" type="submit">Submit Request</button></div>
       </div>
       <div id="form-status" class="status" role="status" aria-live="polite"></div>
@@ -182,7 +184,7 @@
     AI • Automation • Software Development • Staffing • Data Analytics<br>
     Think Out of Box
   </footer>
-</div>
+</main>
 
 <nav class="mobile-action-bar" aria-label="Quick contact actions">
   <a id="mobile-call" href="#">📞<span>Call</span></a>
