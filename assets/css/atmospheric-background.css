@@ -1,0 +1,15 @@
+/* Resolvent atmospheric background v9.0: CSS-only, no external imagery */
+[data-theme="light"]{--rv-page-base:#edf6f3;--rv-glow-a:rgba(103,190,157,.22);--rv-glow-b:rgba(84,157,185,.13);--rv-grid:rgba(23,86,84,.045)}
+[data-theme="dark"]{--rv-page-base:#071722;--rv-glow-a:rgba(54,166,132,.18);--rv-glow-b:rgba(57,117,164,.15);--rv-grid:rgba(168,228,200,.035)}
+body{background-color:var(--rv-page-base);background-image:radial-gradient(ellipse 70% 38% at 5% 0%,var(--rv-glow-a),transparent 72%),radial-gradient(ellipse 55% 35% at 98% 30%,var(--rv-glow-b),transparent 75%),linear-gradient(160deg,transparent 0%,var(--rv-page-base) 65%);background-attachment:scroll}
+body::before{content:"";position:absolute;inset:0 0 auto;height:1800px;pointer-events:none;z-index:0;background-image:linear-gradient(to right,var(--rv-grid) 1px,transparent 1px),linear-gradient(to bottom,var(--rv-grid) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.6),transparent 90%)}
+.hero-orb{pointer-events:none;opacity:.16;filter:blur(28px)}
+.orb-one{background:#58bcaa;width:320px;height:320px}
+.orb-two{background:#4d9bba;width:280px;height:280px}
+.hero{background:linear-gradient(125deg,#071a2a 0%,#113847 48%,#155746 100%);border:1px solid rgba(164,227,192,.28)}
+.hero::before{background-image:radial-gradient(rgba(211,255,231,.15) 1px,transparent 1px);background-size:27px 27px;opacity:.22}
+.section{background:var(--s)}
+[data-theme="light"] .section{box-shadow:0 15px 40px rgba(20,69,67,.08)}
+[data-theme="dark"] .section{box-shadow:0 18px 45px rgba(0,5,13,.23)}
+@media(max-width:560px){body::before{background-size:42px 42px;height:1200px}.hero-orb{opacity:.1;filter:blur(24px)}}
+@media(prefers-reduced-motion:reduce){.hero-orb{animation:none!important}}
