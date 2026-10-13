@@ -1,0 +1,17 @@
+/* Resolvent eight-motion completion — v5.1 */
+.profile-card{isolation:isolate}
+.profile-card::before,.profile-card::after{content:"";position:absolute;left:50%;top:calc(0px + 24px);width:170px;height:170px;border:1px solid rgba(172,245,191,.32);border-radius:50%;transform:translateX(-50%);pointer-events:none;z-index:-1;animation:rv-halo-ring 5s ease-in-out infinite}
+.profile-card::after{animation-delay:2.5s;border-color:rgba(124,212,207,.25)}
+@keyframes rv-halo-ring{0%,100%{opacity:.15;scale:.94}50%{opacity:.7;scale:1.12}}
+.profile-card .profile{transition:transform .35s ease,filter .35s ease;transform:translate3d(var(--rv-px,0px),var(--rv-py,0px),0)}
+.section.reveal.visible .grid > *, .section.reveal.visible .highlights > *, .section.reveal.visible .testimonial-grid > *{animation:rv-stagger .65s cubic-bezier(.2,.75,.25,1) both;animation-delay:calc(min(var(--rv-index,0),8)*65ms)}
+@keyframes rv-stagger{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+#technologies.rv-marquee{display:block;position:relative;overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent)}
+#technologies.rv-marquee .rv-tech-track{display:flex;width:max-content;gap:10px;animation:rv-tech-scroll 35s linear infinite}
+#technologies.rv-marquee .rv-tech-group{display:flex;flex:0 0 auto;gap:10px;align-items:center}
+#technologies.rv-marquee .chip{flex:0 0 auto;white-space:nowrap;animation:none}
+#technologies.rv-marquee:hover .rv-tech-track,#technologies.rv-marquee:focus-within .rv-tech-track{animation-play-state:paused}
+@keyframes rv-tech-scroll{to{transform:translateX(-50%)}}
+@media(max-width:560px){.profile-card::before,.profile-card::after{top:20px;width:144px;height:144px}}
+@media(hover:none){.profile-card .profile{transform:none!important}}
+@media(prefers-reduced-motion:reduce){.profile-card::before,.profile-card::after,.section.reveal.visible .grid > *,.section.reveal.visible .highlights > *,.section.reveal.visible .testimonial-grid > *,#technologies.rv-marquee .rv-tech-track{animation:none!important}#technologies.rv-marquee{mask-image:none}#technologies.rv-marquee .rv-tech-track,#technologies.rv-marquee .rv-tech-group{width:auto;flex-wrap:wrap}#technologies.rv-marquee .rv-tech-group[aria-hidden="true"]{display:none}}
