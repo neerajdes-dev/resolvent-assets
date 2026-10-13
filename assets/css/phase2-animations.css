@@ -1,0 +1,17 @@
+/* Resolvent VCard Phase 2 — scrolling and service interactions */
+.section.reveal { transition:opacity .7s cubic-bezier(.2,.75,.25,1),transform .7s cubic-bezier(.2,.75,.25,1); }
+.section.reveal.visible { opacity:1; transform:translateY(0); }
+.service,.feature,.model { transition:transform .28s cubic-bezier(.2,.75,.25,1),box-shadow .28s ease,border-color .28s ease; }
+@media (hover:hover) {
+  .service:hover,.feature:hover,.model:hover {
+    transform:translateY(-5px);
+    box-shadow:0 12px 28px rgba(18,59,102,.12);
+    border-color:var(--a);
+  }
+}
+.service:active,.feature:active,.model:active { transform:scale(.99); }
+@media (prefers-reduced-motion:reduce) {
+  .section.reveal,.service,.feature,.model { transition:none !important; animation:none !important; }
+  .section.reveal { opacity:1 !important; transform:none !important; }
+  .service:hover,.feature:hover,.model:hover,.service:active,.feature:active,.model:active { transform:none !important; }
+}
