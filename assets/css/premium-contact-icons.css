@@ -1,0 +1,20 @@
+/* Premium vector action icons — no external font or network requests */
+.rv-icon-sprite{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+.rv-icon{width:23px;height:23px;display:block;flex:none}
+.actions .btn{gap:10px;text-align:left;justify-content:flex-start;padding:10px 13px;min-width:0}
+.rv-action-icon{width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:13px;color:#17675b;background:linear-gradient(145deg,rgba(147,238,200,.29),rgba(91,170,195,.12));border:1px solid rgba(106,200,173,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+.rv-action-label{min-width:0;overflow-wrap:anywhere;line-height:1.3}
+[data-theme="dark"] .rv-action-icon{color:#b0efd3;background:linear-gradient(145deg,rgba(84,175,146,.25),rgba(72,137,168,.15));border-color:rgba(159,235,206,.22)}
+.actions .btn.primary .rv-action-icon{color:#fff;background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.25)}
+.actions .btn[data-action="whatsapp"] .rv-action-icon{color:#137f51;background:rgba(60,204,130,.15)}
+.actions .btn[data-action="location"] .rv-action-icon{color:#207aaf;background:rgba(82,176,226,.15)}
+[data-theme="dark"] .actions .btn[data-action="whatsapp"] .rv-action-icon{color:#8ef0ba}
+[data-theme="dark"] .actions .btn[data-action="location"] .rv-action-icon{color:#9dd8f8}
+.mobile-action-bar .rv-mobile-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;color:#187367;background:linear-gradient(145deg,rgba(112,216,177,.24),rgba(103,178,206,.12));border:1px solid rgba(113,204,176,.25)}
+[data-theme="dark"] .mobile-action-bar .rv-mobile-icon{color:#a4e8d2;background:rgba(104,202,164,.14)}
+.mobile-action-bar a{gap:4px}
+.mobile-action-bar a .rv-icon{width:19px;height:19px}
+.mobile-action-bar a span:last-child{font-size:10px;line-height:1.2}
+@media(max-width:560px){.actions .btn{padding:9px 10px;gap:8px}.rv-action-icon{width:37px;height:37px;flex-basis:37px}.rv-action-icon .rv-icon{width:21px;height:21px}.rv-action-label{font-size:12px}.mobile-action-bar a{padding:5px 2px}}
+@media(max-width:360px){.rv-action-icon{width:32px;height:32px;flex-basis:32px}.actions .btn{gap:6px}}
+@media(prefers-reduced-motion:no-preference) and (hover:hover){.actions .btn:hover .rv-action-icon{transform:translateY(-1px);transition:transform .2s ease}}
