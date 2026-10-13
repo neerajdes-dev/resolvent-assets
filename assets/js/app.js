@@ -196,17 +196,17 @@ async function init(){
   document.getElementById("about").textContent=company.about;
 
   document.getElementById("actions").innerHTML=`
-    <a class="btn" href="tel:+${employee.mobileDigits}" data-action="call">📞 Call</a>
-    <a class="btn" href="https://wa.me/${employee.mobileDigits}" target="_blank" rel="noopener" data-action="whatsapp">💬 WhatsApp</a>
-    <a class="btn" href="mailto:${employee.email}" data-action="email">✉️ Email</a>
-    <a class="btn" href="${company.website}" target="_blank" rel="noopener" data-action="website">🌐 Website</a>
-    <a class="btn" href="${employee.linkedin}" target="_blank" rel="noopener" data-action="linkedin">💼 LinkedIn</a>
-    <a class="btn" href="${company.maps}" target="_blank" rel="noopener" data-action="location">📍 Location</a>
+    <a class="btn" href="tel:+${employee.mobileDigits}" data-action="call"><span class="rv-action-icon"><svg class="rv-icon" aria-hidden="true"><use href="#rv-icon-call"></use></svg></span><span class="rv-action-label">Call</span></a>
+    <a class="btn" href="https://wa.me/${employee.mobileDigits}" target="_blank" rel="noopener" data-action="whatsapp"><span class="rv-action-icon"><svg class="rv-icon" aria-hidden="true"><use href="#rv-icon-whatsapp"></use></svg></span><span class="rv-action-label">WhatsApp</span></a>
+    <a class="btn" href="mailto:${employee.email}" data-action="email"><span class="rv-action-icon"><svg class="rv-icon" aria-hidden="true"><use href="#rv-icon-email"></use></svg></span><span class="rv-action-label">Email</span></a>
+    <a class="btn" href="${company.website}" target="_blank" rel="noopener" data-action="website"><span class="rv-action-icon"><svg class="rv-icon" aria-hidden="true"><use href="#rv-icon-website"></use></svg></span><span class="rv-action-label">Website</span></a>
+    <a class="btn" href="${employee.linkedin}" target="_blank" rel="noopener" data-action="linkedin"><span class="rv-action-icon"><svg class="rv-icon" aria-hidden="true"><use href="#rv-icon-linkedin"></use></svg></span><span class="rv-action-label">LinkedIn</span></a>
+    <a class="btn" href="${company.maps}" target="_blank" rel="noopener" data-action="location"><span class="rv-action-icon"><svg class="rv-icon" aria-hidden="true"><use href="#rv-icon-location"></use></svg></span><span class="rv-action-label">Location</span></a>
     ${employee.meeting?.enabled && employee.meeting?.url
-      ? `<a class="btn" href="${employee.meeting.url}" target="_blank" rel="noopener" data-action="meeting">📅 Book Meeting</a>`
+      ? `<a class="btn" href="${employee.meeting.url}" target="_blank" rel="noopener" data-action="meeting"><span class="rv-action-icon"><svg class="rv-icon" aria-hidden="true"><use href="#rv-icon-meeting"></use></svg></span><span class="rv-action-label">Book Meeting</span></a>`
       : ""}
-    <button id="save-contact" class="btn primary" type="button" data-action="save_contact">👤 Save Contact</button>
-    <button id="share-card" class="btn primary" type="button">📤 Share Contact</button>
+    <button id="save-contact" class="btn primary" type="button" data-action="save_contact"><span class="rv-action-icon"><svg class="rv-icon" aria-hidden="true"><use href="#rv-icon-save"></use></svg></span><span class="rv-action-label">Save Contact</span></button>
+    <button id="share-card" class="btn primary" type="button"><span class="rv-action-icon"><svg class="rv-icon" aria-hidden="true"><use href="#rv-icon-share"></use></svg></span><span class="rv-action-label">Share Contact</span></button>
   `;
 
   document.getElementById("share-card").onclick=()=>shareCard(employee.name);
