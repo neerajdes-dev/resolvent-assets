@@ -1,4 +1,4 @@
-const CACHE="resolvent-card-8-0-0";
+const CACHE="resolvent-card-8-1-0";
 const ASSETS=["./","./employee.html","./assets/css/style.css","./assets/css/phase1-animations.css","./assets/css/phase2-animations.css","./assets/css/signature-motion.css","./assets/css/signature-premium.css","./assets/css/eight-motion-complete.css","./assets/css/mobile-premium.css","./assets/css/phase7-scroll-progress.css","./assets/css/phase8-experience.css","./assets/js/app.js","./assets/js/phase2-animations.js","./assets/js/signature-motion.js","./assets/js/eight-motion-complete.js","./data/employees.json","./data/company.json","./data/services.json","./data/industries.json","./data/technologies.json","./data/engagement-models.json","./data/stats.json","./data/testimonials.json","./data/clients.json"];
 self.addEventListener("install",event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS))));
 self.addEventListener("activate",event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key))))));
