@@ -1,0 +1,24 @@
+/* Phase 6 mobile premium refinement */
+@media(max-width:560px){
+.shell{padding:10px 12px}
+.hero{min-height:0;padding-bottom:6px;border-radius:25px}
+.profile-card{width:calc(100% - 26px);margin:62px auto 14px;padding:25px 17px}
+.profile-card h1{font-size:clamp(27px,8vw,34px);overflow-wrap:anywhere}
+.employee-intro{font-size:13px;line-height:1.7}
+.hero-focus{gap:6px}
+.hero-focus span{font-size:11px;padding:7px 10px}
+.actions{gap:10px}
+.actions .btn{min-height:62px;touch-action:manipulation}
+.actions .btn:active{transform:scale(.965)}
+.section{margin-top:16px;padding:23px 19px}
+.mobile-action-bar{left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom,0px));width:auto;border:1px solid var(--b);border-radius:20px;background:var(--s);box-shadow:0 12px 36px rgba(0,10,22,.25);overflow:hidden;backdrop-filter:blur(20px)}
+.mobile-action-bar a{min-height:59px;justify-content:center;touch-action:manipulation}
+.mobile-action-bar a:focus-visible{outline:2px solid var(--a);outline-offset:-3px}
+.mobile-action-bar a:active{background:var(--soft);transform:scale(.95)}
+.footer{padding-bottom:calc(105px + env(safe-area-inset-bottom,0px))}
+.field input,.field select,.field textarea{font-size:16px}
+.client-track{animation-duration:42s}
+}
+@media(max-width:360px){.mobile-action-bar{left:6px;right:6px}.mobile-action-bar span{font-size:9px}.actions .btn{font-size:11px}}
+@media(hover:none){.feature:hover,.service:hover,.model:hover,.client-logo-card:hover{transform:none!important}}
+@media(prefers-reduced-motion:reduce){.actions .btn{transition:none!important}}
