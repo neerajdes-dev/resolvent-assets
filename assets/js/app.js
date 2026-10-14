@@ -14,18 +14,6 @@ function employeeId(){
   return new URLSearchParams(location.search).get("id")||"neeraj-desai";
 }
 
-function applyTheme(theme){
-  document.documentElement.setAttribute("data-theme",theme);
-  localStorage.setItem("resolvent-theme",theme);
-  const button=document.getElementById("theme-toggle");
-  if(button){button.textContent=theme==="dark"?"☀️":"🌙";button.setAttribute("aria-pressed",String(theme==="dark"));button.setAttribute("aria-label",theme==="dark"?"Switch to light theme":"Switch to dark theme");}
-}
-
-function toggleTheme(){
-  const current=document.documentElement.getAttribute("data-theme")||"light";
-  applyTheme(current==="dark"?"light":"dark");
-}
-
 function trackEvent(name,params={}){
   if(typeof gtag==="function") gtag("event",name,params);
 }
@@ -395,10 +383,7 @@ async function init(){
   }
 }
 
-applyTheme(
-  localStorage.getItem("resolvent-theme")||
-  (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light")
-);
+document.documentElement.setAttribute("data-theme","dark");
 
 init().catch(error=>{
   console.error(error);
