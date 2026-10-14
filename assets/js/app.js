@@ -357,8 +357,11 @@ async function init(){
   }
   document.getElementById("office-address").textContent=company.address;
   document.getElementById("map-link").href=company.maps;
-  document.getElementById("brochure-view").href="assets/images/Resolvent_Company_Profile.pdf";
-  document.getElementById("brochure-download").href="assets/images/Resolvent_Company_Profile.pdf";
+  // Both actions intentionally resolve to the exact same versioned PDF file.
+  // Versioning avoids Android Chrome reusing an older PDF viewer response.
+  const brochureUrl=new URL("assets/images/Resolvent_Company_Profile.pdf?v=12.7.0",document.baseURI).href;
+  document.getElementById("brochure-view").href=brochureUrl;
+  document.getElementById("brochure-download").href=brochureUrl;
   document.getElementById("callback-form").onsubmit=event=>submitLead(event,employee);
 
   document.getElementById("mobile-call").href=`tel:+${employee.mobileDigits}`;
