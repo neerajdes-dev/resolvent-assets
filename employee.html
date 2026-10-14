@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="assets/css/phase12-glass-performance.css?v=12.2.0">
   <link rel="stylesheet" href="assets/css/phase12-interactions.css?v=12.3.0">
   <link rel="stylesheet" href="assets/css/premium-contact-icons.css?v=12.4.0">
+  <link rel="stylesheet" href="assets/css/premium-resource-buttons.css?v=12.6.0">
 </head>
 <body>
 <svg class="rv-icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><symbol id="rv-icon-call" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.8L7.1 10a16 16 0 0 0 6.9 6.9l1.5-1.9a2 2 0 0 1 1.8-.6l3 .5a2 2 0 0 1 1.7 1.9Z"/></symbol><symbol id="rv-icon-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 3.6A11.5 11.5 0 0 0 2.8 18L2 22l4.1-1a11.5 11.5 0 0 0 14.3-17.4Z"/><path d="M8.3 7.6c-.3-.6-.6-.6-.9-.6-.5 0-1 .4-1.2.9-.6 1.2.2 2.9 1.7 4.7 1.6 1.9 3.5 3 5.2 3.3 1 .2 2-.2 2.5-.9l.4-.9-2.6-1.2-1.1 1c-1.5-.6-2.8-1.8-3.5-3.3l.9-1.1-1.4-1.9Z"/></symbol><symbol id="rv-icon-email" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 6 9 7 9-7"/></symbol><symbol id="rv-icon-website" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2c5 5 5 15 0 20M12 2c-5 5-5 15 0 20"/></symbol><symbol id="rv-icon-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.1M11 17v-7h3v1a3 3 0 0 1 6 2v4"/></symbol><symbol id="rv-icon-location" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol><symbol id="rv-icon-meeting" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M9 15h6"/></symbol><symbol id="rv-icon-save" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="4"/><path d="M2 21v-2a8 8 0 0 1 12-7M19 14v8m-4-4h8"/></symbol><symbol id="rv-icon-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m9 11 6-5M9 13l6 5"/></symbol></svg>
@@ -116,25 +117,25 @@
   </div>
 </section>
 
-  <section class="section split-section reveal">
+  <section class="section split-section rv-resource-section reveal">
     <div>
       <span class="eyebrow">LEARN MORE</span>
       <h2>Company Profile</h2>
       <p class="lead">Explore our capabilities, solutions, engagement models, and service portfolio.</p>
     </div>
     <div class="button-stack">
-      <a id="brochure-view" class="btn" target="_blank" rel="noopener">📄 View Online</a>
-      <a id="brochure-download" class="btn primary" download>⬇ Download PDF</a>
+      <a id="brochure-view" class="btn rv-resource-btn" target="_blank" rel="noopener" aria-label="View company profile PDF online"><span class="rv-resource-icon"><svg class="rv-icon" aria-hidden="true"><use href="#rv-icon-file"></use></svg></span><span class="rv-resource-copy"><span class="rv-resource-title">View Online</span><span class="rv-resource-subtitle">Company profile</span></span><span class="rv-resource-arrow" aria-hidden="true">↗</span></a>
+      <a id="brochure-download" class="btn primary rv-resource-btn rv-download" download aria-label="Download company profile PDF"><span class="rv-resource-icon"><svg class="rv-icon" aria-hidden="true"><use href="#rv-icon-download"></use></svg></span><span class="rv-resource-copy"><span class="rv-resource-title">Download PDF</span><span class="rv-resource-subtitle">Save brochure</span></span><span class="rv-resource-arrow" aria-hidden="true">↓</span></a>
     </div>
   </section>
 
-  <section class="section split-section reveal">
+  <section class="section split-section rv-resource-section reveal">
     <div>
       <span class="eyebrow">VISIT US</span>
       <h2>Office Location</h2>
       <p id="office-address" class="lead"></p>
     </div>
-    <a id="map-link" class="btn" target="_blank" rel="noopener">📍 Open in Google Maps</a>
+    <a id="map-link" class="btn rv-resource-btn rv-location" target="_blank" rel="noopener" aria-label="Open office location in Google Maps"><span class="rv-resource-icon"><svg class="rv-icon" aria-hidden="true"><use href="#rv-icon-location"></use></svg></span><span class="rv-resource-copy"><span class="rv-resource-title">Open in Google Maps</span><span class="rv-resource-subtitle">Get directions</span></span><span class="rv-resource-arrow" aria-hidden="true">↗</span></a>
   </section>
 
   <section class="section callback-section reveal">
